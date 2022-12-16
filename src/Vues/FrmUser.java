@@ -15,11 +15,13 @@ public class FrmUser extends javax.swing.JFrame {
     /**
      * Creates new form FrmUser
      */
+    User user;
     public FrmUser() {
         initComponents();
     }
     public FrmUser(User unUser){
-        
+        user = unUser;
+        initComponents();
     }
 
     /**
@@ -107,7 +109,7 @@ public class FrmUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModifInfoActionPerformed
 
     private void btnVisualiserPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserPlanningActionPerformed
-       FrmEleveVisualiserPlanning frm = new FrmEleveVisualiserPlanning();
+       FrmEleveVisualiserPlanning frm = new FrmEleveVisualiserPlanning(user);
        frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserPlanningActionPerformed
 

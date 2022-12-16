@@ -31,6 +31,7 @@ public class Lecon {
     private String nomMoniteur;
     private String nomEleve;
     private String immatriculation;
+    private String libelleCategorie;
     private int reglee;
     
     public Lecon() {}
@@ -53,7 +54,15 @@ public class Lecon {
         immatriculation= uneImmatriculation;
         reglee= unReglee;
     }
-
+    public Lecon(int unId, String unMois, String uneDate,String uneHeure, String unNomMoniteur, String uneImmatriculation, String unLibelleCategorie, int unReglee){
+        idLecon= unId;
+        mois = unMois;
+        date = uneDate;
+        heure= uneHeure;
+        nomMoniteur=unNomMoniteur;
+        immatriculation= uneImmatriculation;
+        libelleCategorie = unLibelleCategorie;
+    }
     /**
      * @return the idLecon
      */
@@ -108,5 +117,12 @@ public class Lecon {
      */
     public int getReglee() {
         return reglee;
+    }
+
+    /**
+     * @return the libelleCategorie
+     */
+    public String getLibelleCategorie() {
+        return libelleCategorie;
     }
 }

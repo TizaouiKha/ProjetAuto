@@ -72,7 +72,7 @@ public class CtrlLecon {
     public ArrayList<Lecon> getAllLeconByIdMoniteurAndByIdEleve(int idMoniteur, int idEleve){
         ArrayList<Lecon>lesLecons = new ArrayList<>();
         try {
-            ps= cnx.prepareStatement("SELECT CodeLecon, Date, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, Immatriculation, Reglee "
+            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, CodeEleve, Immatriculation"
                     + "FROM lecon "
                     + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
                     + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
@@ -82,7 +82,7 @@ public class CtrlLecon {
             ps.setInt(2, idEleve);
             rs= ps.executeQuery();
             while(rs.next()){
-                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                 lesLecons.add(lecon);
             }   
             ps.close();
@@ -95,17 +95,18 @@ public class CtrlLecon {
     public ArrayList<Lecon> getAllLeconByIdEleveByTypePermis(int idEleve){
          ArrayList<Lecon>lesLecons= new ArrayList<>();
         try {
-            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, lecon.Immatriculation, categorie.Libelle "
-                    + "FROM lecon "
-                    + "join vehicule on lecon.Immatriculation = vehicule.Immatriculation"
-                    + "join categorie on vehicule.CodeCategorie = categorie.CodeCategorie"
-                    + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
-                    + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
-                    + "WHERE lecon.CodeEleve = ?");
+            ps= cnx.prepareStatement("WHERE lecon.CodeEleve = ?;" +
+                    "SELECT CodeLecon, MONTH(Date) AS mois, Date, Heure , moniteur.Nom as nomMoniteur, lecon.Immatriculation, categorie.Libelle , Reglee" +
+                    "FROM lecon " +
+                    "join vehicule on lecon.Immatriculation = vehicule.Immatriculation" +
+                    "join categorie on vehicule.CodeCategorie = categorie.CodeCategorie" +
+                    "join eleve on lecon.CodeEleve = eleve.CodeEleve" +
+                    "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur"+
+                    "");
             ps.setInt(1, idEleve);
             rs= ps.executeQuery();
             while(rs.next()){
-                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
                 lesLecons.add(lecon);
             }   
             ps.close();

@@ -21,7 +21,8 @@ public class FrmEleveVisualiserPlanning extends javax.swing.JFrame {
     DefaultMutableTreeNode racine;
     DefaultTreeModel model;
     DefaultMutableTreeNode Mois;
-    DefaultMutableTreeNode Jour;
+    DefaultMutableTreeNode Date;
+    DefaultMutableTreeNode LibelleCategorie;
     DefaultMutableTreeNode Heure;
     DefaultMutableTreeNode Moniteur;
     DefaultMutableTreeNode Immatriculation;
@@ -36,6 +37,7 @@ public class FrmEleveVisualiserPlanning extends javax.swing.JFrame {
     }
     public FrmEleveVisualiserPlanning(User unUser){
         user = unUser;   
+        initComponents();
     }
 
     /**
@@ -95,17 +97,21 @@ public class FrmEleveVisualiserPlanning extends javax.swing.JFrame {
         maCnx = new ConnexionBDD();
         ctrlLecon = new CtrlLecon();
         ctrlEleve = new CtrlEleve();
+        racine = new DefaultMutableTreeNode("Toutes les leçons");
         racine.removeAllChildren();
-        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleveByTypePermis()){
+        int idEleve = ctrlEleve.getIdEleveByNom(user.getNomUser());
+        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleve(idEleve)){
             Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
-            Jour = new DefaultMutableTreeNode("Jour:"+lecon.getJour());
+            Date = new DefaultMutableTreeNode("Date"+lecon.getDate());
+            LibelleCategorie = new DefaultMutableTreeNode("Type Permis"+ lecon.getLibelleCategorie());
             Heure = new DefaultMutableTreeNode("Heure:"+lecon.getHeure());
             Moniteur = new DefaultMutableTreeNode("Nom Moniteur:"+lecon.getNomMoniteur());
             Immatriculation = new DefaultMutableTreeNode("Immatriculation:"+lecon.getImmatriculation());
-            Heure.add(Immatriculation);
-            Heure.add(Moniteur);
-            Jour.add(Heure);
-            Mois.add(Jour);
+            Date.add(Heure);
+            Date.add(Moniteur);
+            Date.add(Immatriculation);
+            LibelleCategorie.add(Date);
+            Mois.add(LibelleCategorie);
             racine.add(Mois);
         }
         model=  new DefaultTreeModel(racine);
