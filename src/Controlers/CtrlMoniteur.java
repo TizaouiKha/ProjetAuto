@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -79,4 +80,27 @@ public class CtrlMoniteur {
         }
          return idMoniteur;
     }
-}
+
+    public void AjoutMoniteur(int CodeMoniteur, String Nom, String Prenom, int sexe, String datenaissance, String adresse, String codepostal, String ville, String telephone){
+        try {
+            ps = cnx.prepareStatement("Insert into moniteur VALUES(?,?,?,?,?,?,?,?,?)");
+            ps.setInt(1,CodeMoniteur);
+            ps.setString(2, Nom);
+            ps.setString(3, Prenom);
+            ps.setInt(4, sexe);
+            ps.setString(5, datenaissance);
+            ps.setString(6, adresse);
+            ps.setString(7, codepostal);
+            ps.setString(8, ville);
+            ps.setString(9, telephone);
+            
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlMoniteur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    }
+   

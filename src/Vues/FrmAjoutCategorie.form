@@ -10,6 +10,7 @@
   </SyntheticProperties>
   <Events>
     <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="formComponentHidden"/>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
   </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -37,11 +38,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblLibelleAjoutCategorie" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPrixAjoutCategorie" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCodeCategorie" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="sprPrixAjoutCategorie" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtLibelleAjoutCategorie" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLibelleAjoutCategorie" pref="174" max="32767" attributes="0"/>
+                          <Component id="txtCodeCategorieAjoutCategorie" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -59,7 +62,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="lblTitreAjoutCategorie" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblCodeCategorie" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodeCategorieAjoutCategorie" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblLibelleAjoutCategorie" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtLibelleAjoutCategorie" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,7 +82,7 @@
                   <Component id="btnAjouterAjoutCategorie" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAnnulerAjoutCategorie" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="107" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,11 +114,21 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjouterAjoutCategorieActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAnnulerAjoutCategorie">
       <Properties>
         <Property name="text" type="java.lang.String" value="Annuler"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodeCategorie">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Code Categorie :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodeCategorieAjoutCategorie">
     </Component>
   </SubComponents>
 </Form>
