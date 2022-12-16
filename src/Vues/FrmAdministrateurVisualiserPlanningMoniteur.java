@@ -4,30 +4,16 @@
  */
 package Vues;
 
-import Controlers.CtrlEleve;
-import Controlers.CtrlLecon;
-import Entities.Lecon;
-import Tools.ConnexionBDD;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-
 /**
  *
  * @author khaln
  */
-public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame {
+public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFrame {
 
-    DefaultMutableTreeNode racine;
-    DefaultTreeModel model;
-    DefaultMutableTreeNode Mois;
-    DefaultMutableTreeNode Jour;
-    DefaultMutableTreeNode Heure;
-    DefaultMutableTreeNode Moniteur;
-    DefaultMutableTreeNode Immatriculation;
-    CtrlLecon ctrlLecon;
-    CtrlEleve ctrlEleve;
-    ConnexionBDD maCnx;
-    public FrmAdministrateurVisualiserPlanningEleve() {
+    /**
+     * Creates new form FrmAdministrateurVisualiserPlanningMoniteur
+     */
+    public FrmAdministrateurVisualiserPlanningMoniteur() {
         initComponents();
     }
 
@@ -48,11 +34,6 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
         trVisualiserEleve = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         lblCodeEleve.setText("Code élève: ");
 
@@ -86,7 +67,7 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +82,7 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                     .addComponent(btnAnnuler))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,34 +91,9 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
 
     private void btnVisualiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserActionPerformed
         // TODO add your handling code here:
-        ctrlLecon = new CtrlLecon();
-        ctrlEleve = new CtrlEleve();
-        racine.removeAllChildren();
-        racine = new DefaultMutableTreeNode("Nom Eleve: " +ctrlEleve.getNomEleveById(Integer.parseInt(txtCodeEleve.getText())));
-        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleve(Integer.parseInt(txtCodeEleve.getText()))){
-            Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
-            Jour = new DefaultMutableTreeNode("Jour:"+lecon.getJour());
-            Heure = new DefaultMutableTreeNode("Heure:"+lecon.getHeure());
-            Moniteur = new DefaultMutableTreeNode("Nom Moniteur:"+lecon.getNomMoniteur());
-            Immatriculation = new DefaultMutableTreeNode("Immatriculation:"+lecon.getImmatriculation());
-            Heure.add(Immatriculation);
-            Heure.add(Moniteur);
-            Jour.add(Heure);
-            Mois.add(Jour);
-            racine.add(Mois);
-        }
-        model=  new DefaultTreeModel(racine);
-        trVisualiserEleve.setModel(model);
         
-    }//GEN-LAST:event_btnVisualiserActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        maCnx = new ConnexionBDD();
-        racine = new DefaultMutableTreeNode("Toutes les leçons");
-        model = new DefaultTreeModel(racine);
-        trVisualiserEleve.setModel(model);
-    }//GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_btnVisualiserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,21 +112,20 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningEleve.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningMoniteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningEleve.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningMoniteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningEleve.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningMoniteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningEleve.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAdministrateurVisualiserPlanningMoniteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAdministrateurVisualiserPlanningEleve().setVisible(true);
+                new FrmAdministrateurVisualiserPlanningMoniteur().setVisible(true);
             }
         });
     }
