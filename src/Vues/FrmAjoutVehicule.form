@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -34,13 +37,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lblLibCategorieAjoutVehicule" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="btnAjouterAjoutVehicule" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnAnnulerAjoutVehicule" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="cboLibCategorieAjoutVehicule" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="cboLibCategorieAjoutVehicule" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -51,11 +57,11 @@
                           <Component id="lblAnneeAjoutVehicule" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="sprAnneeAjoutVehicule" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtModeleAjoutVehicule" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMarqueAjoutVehicule" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtImmatriculationAjoutVehicule" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtImmatriculationAjoutVehicule" alignment="0" pref="83" max="32767" attributes="0"/>
+                          <Component id="txtMarqueAjoutVehicule" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtModeleAjoutVehicule" alignment="0" max="32767" attributes="0"/>
+                          <Component id="sprAnneeAjoutVehicule" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -146,11 +152,7 @@
     <Component class="javax.swing.JComboBox" name="cboLibCategorieAjoutVehicule">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Voiture"/>
-            <StringItem index="1" value="Moto"/>
-            <StringItem index="2" value="Camion"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -161,6 +163,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjouterAjoutVehiculeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAnnulerAjoutVehicule">
       <Properties>

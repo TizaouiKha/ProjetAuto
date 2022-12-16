@@ -4,15 +4,20 @@
  */
 package Vues;
 
+import Controlers.CtrlCategorie;
+import Controlers.CtrlVehicule;
+import Entities.Vehicule;
+import Tools.ConnexionBDD;
+
 /**
  *
  * @author Rosca
  */
 public class FrmAjoutVehicule extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FrmAjoutVehicule
-     */
+    
+    ConnexionBDD maCnx;
+    CtrlCategorie ctrlCategorie;
+    CtrlVehicule ctrlVehicule;
     public FrmAjoutVehicule() {
         initComponents();
     }
@@ -41,6 +46,11 @@ public class FrmAjoutVehicule extends javax.swing.JFrame {
         sprAnneeAjoutVehicule = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblAjoutVehicule.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblAjoutVehicule.setText("Ajout Véhicule");
@@ -55,9 +65,12 @@ public class FrmAjoutVehicule extends javax.swing.JFrame {
 
         lblLibCategorieAjoutVehicule.setText("Libelle Catégorie :");
 
-        cboLibCategorieAjoutVehicule.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Voiture", "Moto", "Camion" }));
-
         btnAjouterAjoutVehicule.setText("Ajouter");
+        btnAjouterAjoutVehicule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjouterAjoutVehiculeActionPerformed(evt);
+            }
+        });
 
         btnAnnulerAjoutVehicule.setText("Annuler");
 
@@ -75,12 +88,14 @@ public class FrmAjoutVehicule extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLibCategorieAjoutVehicule)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAjouterAjoutVehicule)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAnnulerAjoutVehicule))
-                            .addComponent(cboLibCategorieAjoutVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cboLibCategorieAjoutVehicule, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(76, 76, 76))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblImmatriculationAjoutVehicule)
@@ -88,11 +103,11 @@ public class FrmAjoutVehicule extends javax.swing.JFrame {
                             .addComponent(lblModeleAjoutVehicule)
                             .addComponent(lblAnneeAjoutVehicule))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sprAnneeAjoutVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtModeleAjoutVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMarqueAjoutVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtImmatriculationAjoutVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtImmatriculationAjoutVehicule, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(txtMarqueAjoutVehicule)
+                            .addComponent(txtModeleAjoutVehicule)
+                            .addComponent(sprAnneeAjoutVehicule))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,6 +144,28 @@ public class FrmAjoutVehicule extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAjouterAjoutVehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterAjoutVehiculeActionPerformed
+        // TODO add your handling code here:
+        String immatriculation = txtImmatriculationAjoutVehicule.getText();
+        String marque = txtMarqueAjoutVehicule.getText();
+        String modele = txtModeleAjoutVehicule.getText();
+        int annee = Integer.parseInt(String.valueOf(sprAnneeAjoutVehicule.getValue()));
+        String libelle = String.valueOf(cboLibCategorieAjoutVehicule.getSelectedItem());
+        ctrlCategorie = new CtrlCategorie();
+        int idCategorie = ctrlCategorie.getIdCategorieByLibelle(libelle);
+        ctrlVehicule = new CtrlVehicule();
+        ctrlVehicule.AjoutVehicule(immatriculation, marque, modele, annee, idCategorie);
+    }//GEN-LAST:event_btnAjouterAjoutVehiculeActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        maCnx = new ConnexionBDD();
+        ctrlCategorie = new CtrlCategorie();
+        for(String categorie : ctrlCategorie.getAllLibelleCategorie()){
+            cboLibCategorieAjoutVehicule.addItem(categorie);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
