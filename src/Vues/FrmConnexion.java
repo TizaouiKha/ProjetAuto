@@ -91,7 +91,7 @@ public class FrmConnexion extends javax.swing.JFrame {
                                     .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(111, 111, 111)
                         .addComponent(lblErreur, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -134,14 +134,18 @@ public class FrmConnexion extends javax.swing.JFrame {
             if(unUser==null){
                 lblErreur.setText("identifiants incorrects");
             }
-            /*else if(unUser.getStatutUser().equals("admin")){
+            else if(unUser.getStatutUser().equals("admin")){
                 FrmAdmin frm = new FrmAdmin();
                 frm.setVisible(true);
             }
-            else{
-                FrmUser frm = new FrmUser(unUser);
+                else if(unUser.getStatutUser().equals("moniteur")){
+                FrmMoniteur frm = new FrmMoniteur();
                 frm.setVisible(true);
-            }*/
+            }
+            else{
+                FrmUser frm = new FrmUser();
+                frm.setVisible(true);
+            }
         }
     }//GEN-LAST:event_btnConnecterMouseClicked
 
