@@ -146,7 +146,7 @@ public class FrmConnexion extends javax.swing.JFrame {
                 frm.setVisible(true);
             }
             else{
-                FrmUser frm = new FrmUser();
+                FrmUser frm = new FrmUser(unUser);
                 frm.setVisible(true);
             }
         }

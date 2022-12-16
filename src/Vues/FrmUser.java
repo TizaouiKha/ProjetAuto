@@ -4,6 +4,8 @@
  */
 package Vues;
 
+import Entities.User;
+
 /**
  *
  * @author khali
@@ -15,6 +17,9 @@ public class FrmUser extends javax.swing.JFrame {
      */
     public FrmUser() {
         initComponents();
+    }
+    public FrmUser(User unUser){
+        
     }
 
     /**
@@ -95,13 +100,14 @@ public class FrmUser extends javax.swing.JFrame {
        frm.setVisible(true);
     }//GEN-LAST:event_btnInscrireActionPerformed
 
+    
     private void btnModifInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifInfoActionPerformed
        FrmModifInfoPerso frm = new FrmModifInfoPerso();
        frm.setVisible(true);
     }//GEN-LAST:event_btnModifInfoActionPerformed
 
     private void btnVisualiserPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserPlanningActionPerformed
-       FrmEleveMoniteurVisualiserPlanning frm = new FrmEleveMoniteurVisualiserPlanning();
+       FrmEleveVisualiserPlanning frm = new FrmEleveVisualiserPlanning();
        frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserPlanningActionPerformed
 

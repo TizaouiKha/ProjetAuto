@@ -92,6 +92,29 @@ public class CtrlLecon {
         }
         return lesLecons;
     }
+    public ArrayList<Lecon> getAllLeconByIdEleveByTypePermis(int idEleve){
+         ArrayList<Lecon>lesLecons= new ArrayList<>();
+        try {
+            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, lecon.Immatriculation, categorie.Libelle "
+                    + "FROM lecon "
+                    + "join vehicule on lecon.Immatriculation = vehicule.Immatriculation"
+                    + "join categorie on vehicule.CodeCategorie = categorie.CodeCategorie"
+                    + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
+                    + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
+                    + "WHERE lecon.CodeEleve = ?");
+            ps.setInt(1, idEleve);
+            rs= ps.executeQuery();
+            while(rs.next()){
+                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                lesLecons.add(lecon);
+            }   
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlLecon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesLecons;
+    }
 }
     
 

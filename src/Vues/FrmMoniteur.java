@@ -81,7 +81,7 @@ public class FrmMoniteur extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVisualiserMonPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserMonPlanningActionPerformed
-       FrmEleveMoniteurVisualiserPlanning frm = new FrmEleveMoniteurVisualiserPlanning();
+       FrmEleveVisualiserPlanning frm = new FrmEleveVisualiserPlanning();
        frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserMonPlanningActionPerformed
 
