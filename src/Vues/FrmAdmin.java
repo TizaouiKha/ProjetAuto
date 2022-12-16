@@ -175,7 +175,7 @@ public class FrmAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAjouterMoniteurActionPerformed
 
     private void btnVisualiserLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserLeconActionPerformed
-       FrmMoniteurVisualiserToutesLesLecons frm = new FrmMoniteurVisualiserToutesLesLecons();
+       FrmAdministrateurVisualiserToutesLesLecons frm = new FrmAdministrateurVisualiserToutesLesLecons();
        frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserLeconActionPerformed
 
