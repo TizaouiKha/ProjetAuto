@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblNomAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPrenomAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSexeAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDateDeNaissanceModifInfoPerso" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAdresseAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodePostalAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtCodeMoniteurAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtNomAjoutMoniteur" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                          <Component id="txtAdresseAjoutMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCodePostalAjoutMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboSexeAjoutMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPrenomAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                          <Component id="jdcDateNaissAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblLoginAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelephoneAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMdpAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblVilleAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtVilleAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTelephoneAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLoginAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMdpAjoutMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btnAjouterAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <Component id="btnAnnulerAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="197" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodeMoniteurAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtNomAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtVilleAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNomAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblVilleAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtPrenomAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTelephoneAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPrenomAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTelephoneAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblSexeAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblLoginAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtLoginAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="cboSexeAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jdcDateNaissAjoutMoniteur" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMdpAjoutMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDateDeNaissanceModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMdpAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAdresseAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAdresseAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtCodePostalAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodePostalAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAjouterAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAnnulerAjoutMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="txtNomAjoutMoniteur">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPrenomAjoutMoniteur">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAdresseAjoutMoniteur">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodePostalAjoutMoniteur">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVilleAjoutMoniteur">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTelephoneAjoutMoniteur">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelephoneAjoutMoniteurActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLoginAjoutMoniteur">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLoginAjoutMoniteurActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMdpAjoutMoniteur">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMdpAjoutMoniteurActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAjouterAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ajouter"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAnnulerAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Annuler"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNomAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="20" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ajout Moniteur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPrenomAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prenom :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSexeAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sexe :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDateDeNaissanceModifInfoPerso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date de naissance :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdresseAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adresse :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodePostalAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Code Postal :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVilleAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ville :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTelephoneAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="T&#xe9;l&#xe9;phone :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLoginAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Login :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMdpAjoutMoniteur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mdp :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cboSexeAjoutMoniteur">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Homme"/>
+            <StringItem index="1" value="Femme"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdcDateNaissAjoutMoniteur">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Code Moniteur :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodeMoniteurAjoutMoniteur">
+    </Component>
+  </SubComponents>
+</Form>
