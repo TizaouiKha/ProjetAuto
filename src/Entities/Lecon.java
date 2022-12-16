@@ -8,7 +8,7 @@ package Entities;
  *
  * @author khaln
  */
-public class Leçon {
+public class Lecon {
     private int idLecon;
     private String mois;
     private String jour;
@@ -18,9 +18,9 @@ public class Leçon {
     private String immatriculation;
     private int reglee;
     
-    public Leçon() {}
+    public Lecon() {}
     
-    public Leçon(int unId, String unMois, String unJour, String uneHeure, String unNomMoniteur, String unNomEleve, String uneImmatriculation){
+    public Lecon(int unId, String unMois, String unJour, String uneHeure, String unNomMoniteur, String unNomEleve, String uneImmatriculation){
         idLecon= unId;
         mois = unMois;
         jour= unJour;

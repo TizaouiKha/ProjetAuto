@@ -4,8 +4,9 @@
  */
 package Vues;
 
-import Controlers.CtrlLeçon;
-import Entities.Leçon;
+import Controlers.CtrlEleve;
+import Controlers.CtrlLecon;
+import Entities.Lecon;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -22,7 +23,8 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
     DefaultMutableTreeNode Heure;
     DefaultMutableTreeNode Moniteur;
     DefaultMutableTreeNode Immatriculation;
-    CtrlLeçon ctrlLeçon;
+    CtrlLecon ctrlLecon;
+    CtrlEleve ctrlEleve;
     public FrmAdministrateurVisualiserPlanningEleve() {
         initComponents();
     }
@@ -105,9 +107,10 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
 
     private void btnVisualiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserActionPerformed
         // TODO add your handling code here:
-        ctrlLeçon = new CtrlLeçon();
+        /*ctrlLecon = new CtrlLecon();
         racine.removeAllChildren();
-        for(Leçon lecon : ctrlLeçon.getAllLeçonByIdEleve(Integer.parseInt(txtCodeEleve.getText()))){
+        System.out.println(ctrlLecon.getAllLeconByIdEleve(113));
+        for(Leçon lecon : ctrlLecon.getAllLeconByIdEleve(Integer.parseInt(txtCodeEleve.getText()))){
             racine = new DefaultMutableTreeNode(lecon.getNomEleve());
             Mois = new DefaultMutableTreeNode(lecon.getMois());
             Jour = new DefaultMutableTreeNode(lecon.getJour());
@@ -121,7 +124,7 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
             racine.add(Mois);
         }
         model=  new DefaultTreeModel(racine);
-        trVisualiserEleve.setModel(model);
+        trVisualiserEleve.setModel(model);*/
         
     }//GEN-LAST:event_btnVisualiserActionPerformed
 
@@ -130,6 +133,8 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
         racine = new DefaultMutableTreeNode("Toutes les leçons");
         model = new DefaultTreeModel(racine);
         trVisualiserEleve.setModel(model);
+        ctrlEleve = new CtrlEleve();
+        ctrlEleve.nomEleve();
     }//GEN-LAST:event_formWindowOpened
 
     /**

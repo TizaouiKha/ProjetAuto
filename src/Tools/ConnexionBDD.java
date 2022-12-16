@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Tools;
 
@@ -14,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author jbuffeteau
+ * @author khaln
  */
 public class ConnexionBDD 
 {
@@ -23,11 +22,10 @@ public class ConnexionBDD
     {
         try
         {
-            String pilote = "com.mysql.jdbc.Driver";
             // chargement du pilote
-            Class.forName(pilote);
+            Class.forName("com.mysql.jdbc.Driver");
             // L'objet connexion à la BDD avec le nom de la base, le user et le password
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost/projetautoecole?serverTimezone="
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost/autoecole?serverTimezone="
                     + TimeZone.getDefault().getID(), "root", "");
         }
         catch (ClassNotFoundException ex)
