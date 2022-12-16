@@ -23,6 +23,7 @@ public class CtrlLecon {
     private PreparedStatement ps;
     private ResultSet rs;
     
+    
     public CtrlLecon(){
         cnx = ConnexionBDD.getCnx();
     }

@@ -25,20 +25,4 @@ public class CtrlEleve {
         cnx =  ConnexionBDD.getCnx();
     }
     
-    public String nomEleve(){
-        String nomEleve="";
-        try {
-            ps = cnx.prepareStatement("select nom from eleve where CodeEleve =8");
-            rs = ps.executeQuery();
-            rs.next();
-            nomEleve= rs.getString(1);
-            rs.close();
-            ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-         return nomEleve;
-       
-    }
 }

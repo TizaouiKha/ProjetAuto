@@ -7,6 +7,7 @@ package Vues;
 import Controlers.CtrlEleve;
 import Controlers.CtrlLecon;
 import Entities.Lecon;
+import Tools.ConnexionBDD;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -17,6 +18,7 @@ import javax.swing.tree.DefaultTreeModel;
 public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame {
 
     DefaultMutableTreeNode racine;
+    DefaultMutableTreeNode nom;
     DefaultTreeModel model;
     DefaultMutableTreeNode Mois;
     DefaultMutableTreeNode Jour;
@@ -25,6 +27,7 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
     DefaultMutableTreeNode Immatriculation;
     CtrlLecon ctrlLecon;
     CtrlEleve ctrlEleve;
+    ConnexionBDD maCnx;
     public FrmAdministrateurVisualiserPlanningEleve() {
         initComponents();
     }
@@ -107,34 +110,35 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
 
     private void btnVisualiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserActionPerformed
         // TODO add your handling code here:
-        /*ctrlLecon = new CtrlLecon();
+        ctrlLecon = new CtrlLecon();
         racine.removeAllChildren();
-        System.out.println(ctrlLecon.getAllLeconByIdEleve(113));
-        for(Leçon lecon : ctrlLecon.getAllLeconByIdEleve(Integer.parseInt(txtCodeEleve.getText()))){
-            racine = new DefaultMutableTreeNode(lecon.getNomEleve());
-            Mois = new DefaultMutableTreeNode(lecon.getMois());
-            Jour = new DefaultMutableTreeNode(lecon.getJour());
-            Heure = new DefaultMutableTreeNode(lecon.getHeure());
-            Moniteur = new DefaultMutableTreeNode(lecon.getNomMoniteur());
-            Immatriculation = new DefaultMutableTreeNode(lecon.getImmatriculation());
+        racine = new DefaultMutableTreeNode("planning:");
+        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleve(Integer.parseInt(txtCodeEleve.getText()))){
+            nom = new DefaultMutableTreeNode("Nom Eleve:"+lecon.getNomEleve());
+            Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
+            Jour = new DefaultMutableTreeNode("Jour:"+lecon.getJour());
+            Heure = new DefaultMutableTreeNode("Heure:"+lecon.getHeure());
+            Moniteur = new DefaultMutableTreeNode("Nom Moniteur:"+lecon.getNomMoniteur());
+            Immatriculation = new DefaultMutableTreeNode("Immatriculation:"+lecon.getImmatriculation());
             Heure.add(Immatriculation);
             Heure.add(Moniteur);
             Jour.add(Heure);
             Mois.add(Jour);
-            racine.add(Mois);
+            nom.add(Mois);
+            
         }
+        racine.add(nom);
         model=  new DefaultTreeModel(racine);
-        trVisualiserEleve.setModel(model);*/
+        trVisualiserEleve.setModel(model);
         
     }//GEN-LAST:event_btnVisualiserActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        maCnx = new ConnexionBDD();
         racine = new DefaultMutableTreeNode("Toutes les leçons");
         model = new DefaultTreeModel(racine);
         trVisualiserEleve.setModel(model);
-        ctrlEleve = new CtrlEleve();
-        ctrlEleve.nomEleve();
     }//GEN-LAST:event_formWindowOpened
 
     /**
