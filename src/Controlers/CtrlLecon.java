@@ -49,6 +49,26 @@ public class CtrlLecon {
         }
         return lesLecons;
     }
+    public ArrayList<Lecon> getAllLeconByIdMoniteur(int idMoniteur){
+         ArrayList<Lecon>lesLecons= new ArrayList<>();
+        try {
+            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, CodeEleve, Immatriculation "
+                    + "FROM lecon "
+                    + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
+                    + "WHERE lecon.CodeMoniteur = ?");
+            ps.setInt(1, idMoniteur);
+            rs= ps.executeQuery();
+            while(rs.next()){
+                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                lesLecons.add(lecon);
+            }   
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlLecon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesLecons;
+    }
 }
     
 

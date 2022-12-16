@@ -4,6 +4,14 @@
  */
 package Vues;
 
+import Controlers.CtrlEleve;
+import Controlers.CtrlLecon;
+import Controlers.CtrlMoniteur;
+import Entities.Lecon;
+import Tools.ConnexionBDD;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author khaln
@@ -13,6 +21,16 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
     /**
      * Creates new form FrmAdministrateurVisualiserPlanningMoniteur
      */
+    DefaultMutableTreeNode racine;
+    DefaultTreeModel model;
+    DefaultMutableTreeNode Mois;
+    DefaultMutableTreeNode Jour;
+    DefaultMutableTreeNode Heure;
+    DefaultMutableTreeNode Eleve;
+    DefaultMutableTreeNode Immatriculation;
+    CtrlLecon ctrlLecon;
+    CtrlMoniteur ctrlMoniteur;
+    ConnexionBDD maCnx;
     public FrmAdministrateurVisualiserPlanningMoniteur() {
         initComponents();
     }
@@ -26,16 +44,21 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblCodeEleve = new javax.swing.JLabel();
-        txtCodeEleve = new javax.swing.JTextField();
+        lblCodeMoniteur = new javax.swing.JLabel();
+        txtCodeMoniteur = new javax.swing.JTextField();
         btnVisualiser = new javax.swing.JButton();
         btnAnnuler = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        trVisualiserEleve = new javax.swing.JTree();
+        trVisualiserMoniteur = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        lblCodeEleve.setText("Code élève: ");
+        lblCodeMoniteur.setText("Code Moniteur: ");
 
         btnVisualiser.setText("Visualiser");
         btnVisualiser.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +69,7 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
 
         btnAnnuler.setText("Annuler");
 
-        jScrollPane1.setViewportView(trVisualiserEleve);
+        jScrollPane1.setViewportView(trVisualiserMoniteur);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,9 +84,9 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
                         .addComponent(btnAnnuler))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(lblCodeEleve)
+                        .addComponent(lblCodeMoniteur)
                         .addGap(38, 38, 38)
-                        .addComponent(txtCodeEleve, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodeMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -74,8 +97,8 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodeEleve)
-                    .addComponent(txtCodeEleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCodeMoniteur)
+                    .addComponent(txtCodeMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVisualiser)
@@ -91,9 +114,34 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
 
     private void btnVisualiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserActionPerformed
         // TODO add your handling code here:
-        
+        ctrlLecon = new CtrlLecon();
+        ctrlMoniteur = new CtrlMoniteur();
+        racine.removeAllChildren();
+        racine = new DefaultMutableTreeNode("Nom Moniteur: " +ctrlMoniteur.getNomMoniteurById(Integer.parseInt(txtCodeMoniteur.getText())));
+        for(Lecon lecon : ctrlLecon.getAllLeconByIdMoniteur(Integer.parseInt(txtCodeMoniteur.getText()))){
+            Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
+            Jour = new DefaultMutableTreeNode("Jour:"+lecon.getJour());
+            Heure = new DefaultMutableTreeNode("Heure:"+lecon.getHeure());
+            Eleve = new DefaultMutableTreeNode("Code Eleve:"+lecon.getNomEleve());
+            Immatriculation = new DefaultMutableTreeNode("Immatriculation:"+lecon.getImmatriculation());
+            Jour.add(Immatriculation);
+            Jour.add(Eleve);
+            Jour.add(Heure);
+            Mois.add(Jour);
+            racine.add(Mois);
+        }
+        model=  new DefaultTreeModel(racine);
+        trVisualiserMoniteur.setModel(model);
 
     }//GEN-LAST:event_btnVisualiserActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        maCnx = new ConnexionBDD();
+        racine = new DefaultMutableTreeNode("Toutes les leçons");
+        model = new DefaultTreeModel(racine);
+        trVisualiserMoniteur.setModel(model);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -134,8 +182,8 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
     private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnVisualiser;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCodeEleve;
-    private javax.swing.JTree trVisualiserEleve;
-    private javax.swing.JTextField txtCodeEleve;
+    private javax.swing.JLabel lblCodeMoniteur;
+    private javax.swing.JTree trVisualiserMoniteur;
+    private javax.swing.JTextField txtCodeMoniteur;
     // End of variables declaration//GEN-END:variables
 }
