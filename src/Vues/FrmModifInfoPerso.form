@@ -42,11 +42,11 @@
                                   <Component id="txtNomModifInfoPerso" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                                   <Component id="txtAdresseModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCodePostalModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jdcDateNaissModifInfoPerso" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboSexeModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtPrenomModifInfoPerso" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jdcDateNaissModifInfoPerso" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -101,8 +101,8 @@
                   <Component id="lblTelephoneModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSexeModifInfoPerso" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -111,16 +111,18 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtMdpModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDateDeNaissanceModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblMdpModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="cboSexeModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jdcDateNaissModifInfoPerso" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jdcDateNaissModifInfoPerso" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMdpModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDateDeNaissanceModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMdpModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -237,8 +239,6 @@
         <Property name="text" type="java.lang.String" value="Mdp :"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jdcDateNaissModifInfoPerso">
-    </Component>
     <Component class="javax.swing.JComboBox" name="cboSexeModifInfoPerso">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -251,6 +251,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdcDateNaissModifInfoPerso">
     </Component>
   </SubComponents>
 </Form>
