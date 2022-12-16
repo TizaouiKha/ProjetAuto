@@ -4,12 +4,18 @@
  */
 package Vues;
 
+import Controlers.CtrlUser;
+import Entities.User;
+import Tools.ConnexionBDD;
+
+
 /**
  *
  * @author khali
  */
 public class FrmConnexion extends javax.swing.JFrame {
-
+    ConnexionBDD maCnx;
+    CtrlUser ctrlUser; 
     /**
      * Creates new form FrmConnexion
      */
@@ -28,11 +34,18 @@ public class FrmConnexion extends javax.swing.JFrame {
 
         lblConnexion = new javax.swing.JLabel();
         lblUtilisateur = new javax.swing.JLabel();
-        txtUtilisateur = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtMotdePasse = new javax.swing.JTextField();
+        txtMdp = new javax.swing.JTextField();
+        btnConnecter = new javax.swing.JButton();
+        lblErreur = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblConnexion.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         lblConnexion.setText("Connexion");
@@ -40,13 +53,20 @@ public class FrmConnexion extends javax.swing.JFrame {
         lblUtilisateur.setFont(new java.awt.Font("Sitka Text", 0, 12)); // NOI18N
         lblUtilisateur.setText("Utilisateur :");
 
-        txtUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUtilisateurActionPerformed(evt);
+                txtLoginActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Mot de passe :");
+
+        btnConnecter.setText("Se connecter");
+        btnConnecter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConnecterMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,14 +77,22 @@ public class FrmConnexion extends javax.swing.JFrame {
                 .addComponent(lblConnexion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(lblUtilisateur))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMotdePasse, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnConnecter)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(lblUtilisateur))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(lblErreur, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,20 +103,52 @@ public class FrmConnexion extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUtilisateur)
-                    .addComponent(txtUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtMotdePasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(136, Short.MAX_VALUE))
+                    .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(btnConnecter, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblErreur, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUtilisateurActionPerformed
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUtilisateurActionPerformed
+    }//GEN-LAST:event_txtLoginActionPerformed
+
+    private void btnConnecterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConnecterMouseClicked
+         if(txtLogin.getText().equals("")){
+            lblErreur.setText("Saisir votre login");
+        }
+        else if(txtMdp.getText().equals("")){
+            lblErreur.setText("Saisir votre Mot de passe");
+        }
+        else{
+            User unUser= ctrlUser.VerifierUser(txtLogin.getText(), txtMdp.getText());
+            if(unUser==null){
+                lblErreur.setText("identifiants incorrects");
+            }
+            /*else if(unUser.getStatutUser().equals("admin")){
+                FrmAdmin frm = new FrmAdmin();
+                frm.setVisible(true);
+            }
+            else{
+                FrmUser frm = new FrmUser(unUser);
+                frm.setVisible(true);
+            }*/
+        }
+    }//GEN-LAST:event_btnConnecterMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        maCnx = new ConnexionBDD();
+        ctrlUser= new CtrlUser();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -126,10 +186,12 @@ public class FrmConnexion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConnecter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblConnexion;
+    private javax.swing.JLabel lblErreur;
     private javax.swing.JLabel lblUtilisateur;
-    private javax.swing.JTextField txtMotdePasse;
-    private javax.swing.JTextField txtUtilisateur;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JTextField txtMdp;
     // End of variables declaration//GEN-END:variables
 }
