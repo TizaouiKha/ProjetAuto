@@ -8,11 +8,13 @@ package Controlers;
  *
  * @author khaln
  */
+import Entities.Moniteur;
 import Tools.ConnexionBDD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,4 +48,19 @@ public class CtrlMoniteur {
          return nomMoniteur;
        
  }
+    public ArrayList<String> getAllNomMoniteur(){
+        ArrayList<String>lesNomsMoniteurs= new ArrayList<>();
+        try {
+            ps = cnx.prepareStatement("select nom from moniteur ");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesNomsMoniteurs;
+    }
 }
