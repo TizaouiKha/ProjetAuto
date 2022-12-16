@@ -9,8 +9,23 @@ package Entities;
  * @author khaln
  */
 public class Lecon {
+
+    /**
+     * @return the date
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(String date) {
+        this.date = date;
+    }
     private int idLecon;
     private String mois;
+    private String date;
     private String jour;
     private String heure;
     private String nomMoniteur;
@@ -28,6 +43,15 @@ public class Lecon {
         nomMoniteur=unNomMoniteur;
         nomEleve=unNomEleve;
         immatriculation= uneImmatriculation;
+    }
+    public Lecon(int unId, String uneDate, String uneHeure, String unNomMoniteur, String unNomEleve, String uneImmatriculation, int unReglee){
+        idLecon= unId;
+        date= uneDate;
+        heure= uneHeure;
+        nomMoniteur=unNomMoniteur;
+        nomEleve=unNomEleve;
+        immatriculation= uneImmatriculation;
+        reglee= unReglee;
     }
 
     /**

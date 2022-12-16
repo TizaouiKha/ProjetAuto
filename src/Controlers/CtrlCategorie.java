@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,44 +17,44 @@ import java.util.logging.Logger;
  *
  * @author khaln
  */
-public class CtrlEleve {
+public class CtrlCategorie {
     private Connection cnx;
     private PreparedStatement ps;
     private ResultSet rs;
     
-    public CtrlEleve(){
+    public CtrlCategorie(){
         cnx =  ConnexionBDD.getCnx();
     }
     
-    public String getNomEleveById(int idEleve){
-        String nomEleve="";
+    public int getIdCategorieByLibelle(String libelle){
+        int idCategorie=0;
         try {
-            ps = cnx.prepareStatement("select nom from eleve where CodeEleve =?");
-            ps.setInt(1, idEleve);
+            ps = cnx.prepareStatement("select CodeCategorie from categorie where Libelle =?");
+            ps.setString(1, libelle);
             rs = ps.executeQuery();
             rs.next();
-            nomEleve= rs.getString(1);
+            idCategorie= rs.getInt(1);
             rs.close();
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
         }
-         return nomEleve;
+         return idCategorie;
        
     }
-    public int getIdEleveByNom(String nomEleve){
-        int idEleve=0;
+    public ArrayList<String> getAllLibelleCategorie(){
+        ArrayList<String> lesCategories = new ArrayList<>();
         try {
-            ps = cnx.prepareStatement("select CodeEleve from eleve where nom =?");
-            ps.setString(1, nomEleve);
+            ps = cnx.prepareStatement("select libelle from categorie ");
             rs = ps.executeQuery();
-            rs.next();
-            idEleve= rs.getInt(1);
+            while(rs.next()){
+                lesCategories.add(rs.getString(1));
+            }
             rs.close();
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
         }
-         return idEleve;
+        return lesCategories;
     }
 }
