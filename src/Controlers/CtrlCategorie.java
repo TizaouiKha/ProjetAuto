@@ -57,4 +57,20 @@ public class CtrlCategorie {
         }
         return lesCategories;
     }
+     public String getLibelleCategorieById(int idCategorie){
+        String libelle="";
+        try {
+            ps = cnx.prepareStatement("select Libelle from categorie where CodeCategorie =?");
+            ps.setInt(1, idCategorie);
+            rs = ps.executeQuery();
+            rs.next();
+            libelle= rs.getString(1);
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return libelle;
+       
+    }
 }

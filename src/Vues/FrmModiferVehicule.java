@@ -4,12 +4,21 @@
  */
 package Vues;
 
+import Controlers.CtrlCategorie;
+import Controlers.CtrlVehicule;
+import Entities.Vehicule;
+import Tools.ConnexionBDD;
+import Tools.ModelJTable;
+
 /**
  *
  * @author Rosca
  */
 public class FrmModiferVehicule extends javax.swing.JFrame {
-
+    ConnexionBDD maCnx;
+    CtrlVehicule ctrlVehicule;
+    CtrlCategorie ctrlCategorie;
+    ModelJTable mdl;
     /**
      * Creates new form FrmAjoutVehicule
      */
@@ -43,6 +52,11 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
         tblModifVehicule = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblTitreModifVehicule.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTitreModifVehicule.setText("Modifier Véhicule");
@@ -57,32 +71,32 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
 
         lblLibCategorieModifVehicule.setText("Libelle Catégorie :");
 
-        cboLibCategorieModifVehicule.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Voiture", "Moto", "Camion" }));
-
         btnModifierModifVehicule.setText("Modifier");
+        btnModifierModifVehicule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifierModifVehiculeActionPerformed(evt);
+            }
+        });
 
         btnAnnulerModifVehicule.setText("Annuler");
 
         tblModifVehicule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"AA-229-AA", "BMW", "Série 1",  new Integer(2007), "Voiture"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Immatriculation", "Marque", "Modele", "Annee", "Libelle Categorie"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            }
+        ));
+        tblModifVehicule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblModifVehiculeMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblModifVehicule);
@@ -95,32 +109,34 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                 .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblLibCategorieModifVehicule)
-                            .addComponent(btnModifierModifVehicule))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cboLibCategorieModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAnnulerModifVehicule)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblImmatriculationModifVehicule)
                             .addComponent(lblMarqueModifVehicule)
                             .addComponent(lblModeleModifVehicule)
                             .addComponent(lblAnneeModifVehicule))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtModeleModifVehicule, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(txtMarqueModifVehicule)
+                            .addComponent(txtImmatriculationModifVehicule)
+                            .addComponent(sprAnneeModifVehicule, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblLibCategorieModifVehicule)
+                            .addComponent(btnModifierModifVehicule))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtImmatriculationModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sprAnneeModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtModeleModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMarqueModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(81, 81, 81)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTitreModifVehicule)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addComponent(btnAnnulerModifVehicule)
+                            .addComponent(cboLibCategorieModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(lblTitreModifVehicule)
+                        .addGap(411, 411, 411))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +147,9 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblImmatriculationModifVehicule)
                     .addComponent(txtImmatriculationModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMarqueModifVehicule)
                             .addComponent(txtMarqueModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,16 +165,57 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLibCategorieModifVehicule)
                             .addComponent(cboLibCategorieModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModifierModifVehicule)
                     .addComponent(btnAnnulerModifVehicule))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        maCnx = new ConnexionBDD();
+        ctrlVehicule = new CtrlVehicule();
+        ctrlCategorie = new CtrlCategorie();
+        for(String categorie : ctrlCategorie.getAllLibelleCategorie()){
+            cboLibCategorieModifVehicule.addItem(categorie);
+        }
+        mdl = new ModelJTable();
+        mdl.loadDatasVehicule(ctrlVehicule.getAllVehicule());
+         tblModifVehicule.setModel(mdl);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tblModifVehiculeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblModifVehiculeMouseClicked
+        // TODO add your handling code here:
+        String immatriculation = String.valueOf(tblModifVehicule.getValueAt(tblModifVehicule.getSelectedRow(), 0));
+        ctrlVehicule =new CtrlVehicule();
+        
+        Vehicule vehicule = ctrlVehicule.getVehiculeByImmatriculation(immatriculation);
+        txtImmatriculationModifVehicule.setText(vehicule.getImmatriculation());
+        txtMarqueModifVehicule.setText(vehicule.getMarque());
+        txtModeleModifVehicule.setText(vehicule.getModele());
+        sprAnneeModifVehicule.setValue(vehicule.getAnnee());
+        cboLibCategorieModifVehicule.setSelectedItem(ctrlCategorie.getLibelleCategorieById(vehicule.getIdCategorie()));
+        
+    }//GEN-LAST:event_tblModifVehiculeMouseClicked
+
+    private void btnModifierModifVehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierModifVehiculeActionPerformed
+        // TODO add your handling code here:
+        String ancImmatriculation= String.valueOf(tblModifVehicule.getValueAt(tblModifVehicule.getSelectedRow(), 0));
+        String nouvImmatriculation = txtImmatriculationModifVehicule.getText();
+        String marque = txtMarqueModifVehicule.getText();
+        String modele = txtModeleModifVehicule.getText();
+        int annee =Integer.parseInt(String.valueOf(sprAnneeModifVehicule.getValue()));
+        int idCategorie = ctrlCategorie.getIdCategorieByLibelle(String.valueOf(cboLibCategorieModifVehicule.getSelectedItem()));
+        ctrlVehicule.UpdateVehicule(ancImmatriculation, nouvImmatriculation, marque, modele, annee, idCategorie);
+    }//GEN-LAST:event_btnModifierModifVehiculeActionPerformed
 
     /**
      * @param args the command line arguments

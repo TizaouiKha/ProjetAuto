@@ -45,4 +45,50 @@ public class CtrlVehicule{
             Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public ArrayList<Vehicule> getAllVehicule(){
+        ArrayList<Vehicule> lesVehicules = new ArrayList<>();
+        try {
+            ps= cnx.prepareStatement("SELECT Immatriculation, Marque ,Modele, Annee, CodeCategorie From vehicule");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Vehicule vehicule = new Vehicule(rs.getString("Immatriculation"), rs.getString("Marque"), rs.getString("Modele"), rs.getInt("Annee"), rs.getInt("CodeCategorie"));
+                lesVehicules.add(vehicule);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesVehicules;
+    }
+    public Vehicule getVehiculeByImmatriculation(String immatriculation){
+        Vehicule vehicule = null;
+        try {
+            ps = cnx.prepareStatement("select  Immatriculation, Marque ,Modele, Annee, CodeCategorie From vehicule where Immatriculation =?");
+            ps.setString(1, immatriculation);
+            rs= ps.executeQuery();
+            rs.next();
+            vehicule = new Vehicule(rs.getString("immatriculation"), rs.getString("Marque"), rs.getString("Modele"), rs.getInt("Annee"), rs.getInt("CodeCategorie"));
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vehicule;
+        }
+    
+    public void UpdateVehicule(String ancImmatriculation,String nouvImmatriculation, String marque , String modele, int annee, int idCategorie){
+        try {
+            ps = cnx.prepareStatement("Update vehicule set Immatriculation = ?, Marque =?, Modele= ?, Annee= ?, CodeCategorie = ? where Immatriculation =?");
+            ps.setString(1,nouvImmatriculation);
+            ps.setString(2, marque);
+            ps.setString(3, modele);
+            ps.setInt(4, annee);
+            ps.setInt(5, idCategorie);  
+            ps.setString(6, ancImmatriculation);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -5,6 +5,7 @@
 package Tools;
 
 import Entities.Lecon;
+import Entities.Vehicule;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
@@ -54,6 +55,21 @@ public class ModelJTable extends AbstractTableModel {
             lignes[i][4] = lecon.getNomEleve();
             lignes[i][5] = lecon.getImmatriculation();
             lignes[i][6] = lecon.getReglee();
+            i++;
+        }
+        fireTableChanged(null);
+    }
+    public void loadDatasVehicule(ArrayList<Vehicule>lesVehicules){
+        colonnes = new String[]{"Immatriculation", "Marque","Modele","Annee","CodeCategorie"};
+        lignes = new Object[lesVehicules.size()][5];
+        int i = 0;
+        for (Vehicule vehicule : lesVehicules )
+        {
+            lignes[i][0] = vehicule.getImmatriculation();
+            lignes[i][1] = vehicule.getMarque();
+            lignes[i][2] = vehicule.getModele();
+            lignes[i][3] = vehicule.getAnnee();
+            lignes[i][4] = vehicule.getIdCategorie();
             i++;
         }
         fireTableChanged(null);
