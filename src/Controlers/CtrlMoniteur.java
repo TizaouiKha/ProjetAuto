@@ -54,7 +54,7 @@ public class CtrlMoniteur {
             ps = cnx.prepareStatement("select nom from moniteur ");
             rs = ps.executeQuery();
             while(rs.next()){
-                
+                lesNomsMoniteurs.add(rs.getString("nom"));
             }
             rs.close();
             ps.close();
@@ -62,5 +62,21 @@ public class CtrlMoniteur {
             Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lesNomsMoniteurs;
+    }
+    
+    public int getIdMoniteurByNom(String nomMoniteur){
+        int idMoniteur=0;
+        try {
+            ps = cnx.prepareStatement("select CodeMoniteur from moniteur where nom =?");
+            ps.setString(1, nomMoniteur);
+            rs = ps.executeQuery();
+            rs.next();
+            idMoniteur= rs.getInt(1);
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return idMoniteur;
     }
 }

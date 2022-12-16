@@ -4,6 +4,12 @@
  */
 package Vues;
 
+import Controlers.CtrlEleve;
+import Controlers.CtrlLecon;
+import Controlers.CtrlMoniteur;
+import Tools.ConnexionBDD;
+import Tools.ModelJTable;
+
 /**
  *
  * @author Rosca
@@ -13,6 +19,11 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
     /**
      * Creates new form FrmMoniteurVisualiserToutesLesLecons
      */
+    CtrlLecon ctrlLecon;
+    CtrlEleve ctrlEleve;
+    CtrlMoniteur ctrlMoniteur;
+    ConnexionBDD maCnx;
+    ModelJTable mdl;
     public FrmAdministrateurVisualiserToutesLesLecons() {
         initComponents();
     }
@@ -28,7 +39,7 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
 
         lblTitreVisuToutesLecons = new javax.swing.JLabel();
         lblMoniteurVisuToutesLecons = new javax.swing.JLabel();
-        cboMoniteurVisuToutesLecons = new javax.swing.JComboBox<>();
+        cboMoniteur = new javax.swing.JComboBox<>();
         lblEleveVisuToutesLecons = new javax.swing.JLabel();
         txtEleveVisuToutesLecons = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -36,13 +47,16 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         btnVisualiserVisuToutesLecons = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblTitreVisuToutesLecons.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTitreVisuToutesLecons.setText("Visualiser le planning de toutes les leçons ");
 
         lblMoniteurVisuToutesLecons.setText("Moniteur :");
-
-        cboMoniteurVisuToutesLecons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblEleveVisuToutesLecons.setText("Eleve :");
 
@@ -60,6 +74,11 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         jScrollPane1.setViewportView(tblVisuToutesLecons);
 
         btnVisualiserVisuToutesLecons.setText("Visualiser");
+        btnVisualiserVisuToutesLecons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualiserVisuToutesLeconsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,9 +96,9 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
                             .addComponent(lblMoniteurVisuToutesLecons)
                             .addComponent(lblEleveVisuToutesLecons))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEleveVisuToutesLecons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboMoniteurVisuToutesLecons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboMoniteur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEleveVisuToutesLecons)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -95,7 +114,7 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMoniteurVisuToutesLecons)
-                    .addComponent(cboMoniteurVisuToutesLecons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEleveVisuToutesLecons)
@@ -109,6 +128,29 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        maCnx = new ConnexionBDD();
+        ctrlMoniteur = new CtrlMoniteur();
+        for(String Moniteur : ctrlMoniteur.getAllNomMoniteur()){
+            cboMoniteur.addItem(Moniteur);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnVisualiserVisuToutesLeconsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserVisuToutesLeconsActionPerformed
+        // TODO add your handling code here:
+        mdl = new ModelJTable();
+        ctrlLecon = new CtrlLecon();
+        ctrlEleve = new CtrlEleve();
+        String nomEleve = txtEleveVisuToutesLecons.getText();
+        String nomMoniteur = String.valueOf(cboMoniteur.getSelectedItem());
+        int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(nomMoniteur);
+        int idEleve= ctrlEleve.getIdEleveByNom(nomEleve);
+        mdl.loadDatasLeconsByMoniteurAndByEleve(ctrlLecon.getAllLeconByIdMoniteurAndByIdEleve(idMoniteur, idEleve));
+        tblVisuToutesLecons.setModel(mdl);
+    }//GEN-LAST:event_btnVisualiserVisuToutesLeconsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +190,7 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVisualiserVisuToutesLecons;
-    private javax.swing.JComboBox<String> cboMoniteurVisuToutesLecons;
+    private javax.swing.JComboBox<String> cboMoniteur;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEleveVisuToutesLecons;
     private javax.swing.JLabel lblMoniteurVisuToutesLecons;

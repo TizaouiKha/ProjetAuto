@@ -69,6 +69,29 @@ public class CtrlLecon {
         }
         return lesLecons;
     }
+    public ArrayList<Lecon> getAllLeconByIdMoniteurAndByIdEleve(int idMoniteur, int idEleve){
+        ArrayList<Lecon>lesLecons = new ArrayList<>();
+        try {
+            ps= cnx.prepareStatement("SELECT CodeLecon, Date, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, Immatriculation, Reglee "
+                    + "FROM lecon "
+                    + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
+                    + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
+                    + "WHERE lecon.CodeMoniteur = ? "
+                    + "AND lecon.CodeEleve = ?;");
+            ps.setInt(1, idMoniteur);
+            ps.setInt(2, idEleve);
+            rs= ps.executeQuery();
+            while(rs.next()){
+                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                lesLecons.add(lecon);
+            }   
+            ps.close();
+            rs.close();
+            } catch (SQLException ex) {
+            Logger.getLogger(CtrlLecon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesLecons;
+    }
 }
     
 

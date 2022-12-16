@@ -41,4 +41,19 @@ public class CtrlEleve {
          return nomEleve;
        
     }
+    public int getIdEleveByNom(String nomEleve){
+        int idEleve=0;
+        try {
+            ps = cnx.prepareStatement("select CodeEleve from eleve where nom =?");
+            ps.setString(1, nomEleve);
+            rs = ps.executeQuery();
+            rs.next();
+            idEleve= rs.getInt(1);
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return idEleve;
+    }
 }

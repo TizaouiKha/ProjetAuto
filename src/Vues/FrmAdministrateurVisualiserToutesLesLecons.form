@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -37,9 +40,9 @@
                           <Component id="lblEleveVisuToutesLecons" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtEleveVisuToutesLecons" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboMoniteurVisuToutesLecons" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cboMoniteur" max="32767" attributes="0"/>
+                          <Component id="txtEleveVisuToutesLecons" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -62,7 +65,7 @@
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblMoniteurVisuToutesLecons" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cboMoniteurVisuToutesLecons" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cboMoniteur" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -92,15 +95,10 @@
         <Property name="text" type="java.lang.String" value="Moniteur :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cboMoniteurVisuToutesLecons">
+    <Component class="javax.swing.JComboBox" name="cboMoniteur">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -139,6 +137,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Visualiser"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualiserVisuToutesLeconsActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
