@@ -143,6 +143,7 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
         
         ctrlCategorie = new CtrlCategorie();
         ctrlCategorie.AjoutCategorie(codeCategorie, libelle, prix);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnAjouterAjoutCategorieActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
