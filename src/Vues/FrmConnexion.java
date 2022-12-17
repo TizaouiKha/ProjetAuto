@@ -142,7 +142,7 @@ public class FrmConnexion extends javax.swing.JFrame {
                 frm.setVisible(true);
             }
                 else if(unUser.getStatutUser().equals("moniteur")){
-                FrmMoniteur frm = new FrmMoniteur();
+                FrmMoniteur frm = new FrmMoniteur(unUser);
                 frm.setVisible(true);
             }
             else{

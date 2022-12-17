@@ -63,6 +63,14 @@ public class Lecon {
         immatriculation= uneImmatriculation;
         libelleCategorie = unLibelleCategorie;
     }
+    public Lecon( String unMois, String uneDate,String uneHeure, String unNomEleve, String uneImmatriculation, String unLibelleCategorie, int unReglee){
+        mois = unMois;
+        date = uneDate;
+        heure= uneHeure;
+        nomEleve=unNomEleve;
+        immatriculation= uneImmatriculation;
+        libelleCategorie = unLibelleCategorie;
+    }
     /**
      * @return the idLecon
      */

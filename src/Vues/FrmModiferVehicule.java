@@ -215,6 +215,10 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
         int annee =Integer.parseInt(String.valueOf(sprAnneeModifVehicule.getValue()));
         int idCategorie = ctrlCategorie.getIdCategorieByLibelle(String.valueOf(cboLibCategorieModifVehicule.getSelectedItem()));
         ctrlVehicule.UpdateVehicule(ancImmatriculation, nouvImmatriculation, marque, modele, annee, idCategorie);
+        ctrlVehicule = new CtrlVehicule();
+        mdl = new ModelJTable();
+        mdl.loadDatasVehicule(ctrlVehicule.getAllVehicule());
+         tblModifVehicule.setModel(mdl);
     }//GEN-LAST:event_btnModifierModifVehiculeActionPerformed
 
     /**

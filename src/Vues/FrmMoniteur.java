@@ -4,16 +4,22 @@
  */
 package Vues;
 
+import Entities.User;
+
 /**
  *
  * @author khali
  */
 public class FrmMoniteur extends javax.swing.JFrame {
-
+    User user;
     /**
      * Creates new form FrmMoniteur
      */
     public FrmMoniteur() {
+        initComponents();
+    }
+    public FrmMoniteur(User unUser) {
+        user = unUser;
         initComponents();
     }
 
@@ -81,7 +87,7 @@ public class FrmMoniteur extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVisualiserMonPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserMonPlanningActionPerformed
-       FrmEleveVisualiserPlanning frm = new FrmEleveVisualiserPlanning();
+       FrmMoniteurVisualiserPlanning frm = new FrmMoniteurVisualiserPlanning(user);
        frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserMonPlanningActionPerformed
 
