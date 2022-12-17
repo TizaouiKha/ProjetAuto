@@ -49,6 +49,11 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         cboVoitureDispoInscrireLecon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSinscrireInscrireLecon.setText("S'inscire");
+        btnSinscrireInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSinscrireInscrireLeconActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,6 +109,11 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSinscrireInscrireLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSinscrireInscrireLeconActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSinscrireInscrireLeconActionPerformed
 
     /**
      * @param args the command line arguments
