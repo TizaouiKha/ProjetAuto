@@ -100,7 +100,7 @@ public class FrmEleveVisualiserPlanning extends javax.swing.JFrame {
         racine = new DefaultMutableTreeNode("Toutes les leçons");
         racine.removeAllChildren();
         int idEleve = ctrlEleve.getIdEleveByNom(user.getNomUser());
-        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleve(idEleve)){
+        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleveByTypePermis(idEleve)){
             Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
             Date = new DefaultMutableTreeNode("Date"+lecon.getDate());
             LibelleCategorie = new DefaultMutableTreeNode("Type Permis"+ lecon.getLibelleCategorie());

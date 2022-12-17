@@ -95,18 +95,18 @@ public class CtrlLecon {
     public ArrayList<Lecon> getAllLeconByIdEleveByTypePermis(int idEleve){
          ArrayList<Lecon>lesLecons= new ArrayList<>();
         try {
-            ps= cnx.prepareStatement("WHERE lecon.CodeEleve = ?;" +
-                    "SELECT CodeLecon, MONTH(Date) AS mois, Date, Heure , moniteur.Nom as nomMoniteur, lecon.Immatriculation, categorie.Libelle , Reglee" +
-                    "FROM lecon " +
-                    "join vehicule on lecon.Immatriculation = vehicule.Immatriculation" +
-                    "join categorie on vehicule.CodeCategorie = categorie.CodeCategorie" +
-                    "join eleve on lecon.CodeEleve = eleve.CodeEleve" +
-                    "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur"+
-                    "");
+            ps= cnx.prepareStatement("""
+                                     SELECT lecon.CodeLecon,MONTH(lecon.Date) AS mois, lecon.Date, lecon.Heure , moniteur.Nom as nomMoniteur, lecon.Immatriculation, categorie.Libelle , lecon.Reglee
+                                     FROM lecon 
+                                     join vehicule on lecon.Immatriculation = vehicule.Immatriculation
+                                     join categorie on vehicule.CodeCategorie = categorie.CodeCategorie
+                                     join eleve on lecon.CodeEleve = eleve.CodeEleve
+                                     join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur
+                                     WHERE lecon.CodeEleve = ?;""");
             ps.setInt(1, idEleve);
             rs= ps.executeQuery();
             while(rs.next()){
-                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8));
                 lesLecons.add(lecon);
             }   
             ps.close();
