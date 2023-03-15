@@ -140,6 +140,10 @@ public class CtrlLecon {
         }
         return lesLecons;
     }
-}
     
-
+    public void insertLecon(){
+        
+        
+    }   
+ 
+}

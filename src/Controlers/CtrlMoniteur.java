@@ -101,6 +101,5 @@ public class CtrlMoniteur {
             Logger.getLogger(CtrlMoniteur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
-    }
+}
    

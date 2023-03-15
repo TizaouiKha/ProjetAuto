@@ -4,16 +4,31 @@
  */
 package Vues;
 
+import Controlers.CtrlMoniteur;
+import Controlers.CtrlVehicule;
+import Entities.User;
+import Entities.Vehicule;
+import Tools.ConnexionBDD;
+import java.util.Date;
+
 /**
  *
  * @author Rosca
  */
 public class FrmInscrireAUneLecon extends javax.swing.JFrame {
-
+    
+    ConnexionBDD maCnx;
+    CtrlMoniteur ctrlMoniteur;
+    CtrlVehicule ctrlVehicule;
+    User user;
     /**
      * Creates new form FrmInscrireAUneLecon
      */
     public FrmInscrireAUneLecon() {
+        initComponents();
+    }
+    public FrmInscrireAUneLecon(User unUser){
+        user = unUser;
         initComponents();
     }
 
@@ -36,17 +51,23 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         btnSinscrireInscrireLecon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel1.setText("S'inscrire a une lecon");
 
-        cboPermisInscrireLecon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Permis B", "Permis C" }));
+        cboPermisInscrireLecon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Permis Voiture", "Permis Moto", "Permis Camion" }));
+        cboPermisInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboPermisInscrireLeconActionPerformed(evt);
+            }
+        });
 
         lblHoraireInscrireLecon.setText("Horaire :");
-
-        cboMoniteurDispoInscrireLecon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cboVoitureDispoInscrireLecon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSinscrireInscrireLecon.setText("S'inscire");
         btnSinscrireInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
@@ -68,11 +89,13 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboPermisInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblHoraireInscrireLecon)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtHoraireInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtHoraireInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cboPermisInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(99, 99, 99)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboVoitureDispoInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -83,7 +106,7 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(171, 171, 171)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,8 +135,59 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
 
     private void btnSinscrireInscrireLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSinscrireInscrireLeconActionPerformed
         // TODO add your handling code here:
-        
+        ctrlMoniteur = new CtrlMoniteur();
+        ctrlVehicule = new CtrlVehicule();
+        Date date = jcInscrireLecon.getDate();
+        String heure = txtHoraireInscrireLecon.getText();
+        int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(cboMoniteurDispoInscrireLecon.getSelectedItem().toString());
+        int idUser = user.getIdUser();
+        String immatriculation = ctrlVehicule.getImmatriculationByModele(cboVoitureDispoInscrireLecon.getSelectedItem().toString());
     }//GEN-LAST:event_btnSinscrireInscrireLeconActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        ctrlMoniteur = new CtrlMoniteur();
+        for(String moniteur : ctrlMoniteur.getAllNomMoniteur()){
+            cboMoniteurDispoInscrireLecon.addItem(moniteur);
+        }
+        ctrlVehicule = new CtrlVehicule();
+        if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Voiture")){
+            for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(1)){
+                cboVoitureDispoInscrireLecon.addItem(vehicule.getModele());
+            }
+        }
+        else if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Moto")){
+            for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(4)){
+                cboVoitureDispoInscrireLecon.addItem(vehicule.getModele());
+            }
+        }
+        else if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Camion")){
+            for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(2)){
+                cboVoitureDispoInscrireLecon.addItem(vehicule.getModele());
+            }
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void cboPermisInscrireLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPermisInscrireLeconActionPerformed
+        // TODO add your handling code here:
+        ctrlVehicule = new CtrlVehicule();
+        if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Voiture")){
+            for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(1)){
+                cboVoitureDispoInscrireLecon.addItem(vehicule.getModele());
+            }
+        }
+        else if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Moto")){
+            for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(4)){
+                cboVoitureDispoInscrireLecon.addItem(vehicule.getModele());
+            }
+        }
+        else if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Camion")){
+            for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(2)){
+                cboVoitureDispoInscrireLecon.addItem(vehicule.getModele());
+            }
+        }
+    }//GEN-LAST:event_cboPermisInscrireLeconActionPerformed
 
     /**
      * @param args the command line arguments

@@ -91,4 +91,34 @@ public class CtrlVehicule{
             Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public ArrayList<Vehicule> getVehiculesByCategorie(int categorie){
+        ArrayList<Vehicule>lesVehicules= new ArrayList<>();
+        try {
+            ps= cnx.prepareStatement("Select * from vehicule where CodeCategorie = ? ");
+            ps.setInt(1, categorie);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Vehicule vehicule = new Vehicule(rs.getString("Immatriculation"), rs.getString("Marque"), rs.getString("Modele"), rs.getInt("Annee"), rs.getInt("CodeCategorie"));
+                lesVehicules.add(vehicule);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesVehicules;
+    }
+    public String getImmatriculationByModele(String modele){
+        String immatriculation = "";
+        try {
+            ps=cnx.prepareStatement("Select Immatriculation from vehicule where Modele = ?");    
+            ps.setString(1, modele);
+            rs=ps.executeQuery();
+            rs.next();
+            immatriculation = rs.getString(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlVehicule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return immatriculation;
+    }
 }

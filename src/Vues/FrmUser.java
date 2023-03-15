@@ -98,7 +98,7 @@ public class FrmUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscrireActionPerformed
-       FrmInscrireAUneLecon frm = new FrmInscrireAUneLecon();
+       FrmInscrireAUneLecon frm = new FrmInscrireAUneLecon(user);
        frm.setVisible(true);
     }//GEN-LAST:event_btnInscrireActionPerformed
 
