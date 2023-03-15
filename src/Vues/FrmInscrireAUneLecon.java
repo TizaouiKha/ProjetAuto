@@ -4,6 +4,7 @@
  */
 package Vues;
 
+import Controlers.CtrlLecon;
 import Controlers.CtrlMoniteur;
 import Controlers.CtrlVehicule;
 import Entities.User;
@@ -20,6 +21,7 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
     ConnexionBDD maCnx;
     CtrlMoniteur ctrlMoniteur;
     CtrlVehicule ctrlVehicule;
+    CtrlLecon ctrlLecon;
     User user;
     /**
      * Creates new form FrmInscrireAUneLecon
@@ -69,6 +71,18 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
 
         lblHoraireInscrireLecon.setText("Horaire :");
 
+        cboMoniteurDispoInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMoniteurDispoInscrireLeconActionPerformed(evt);
+            }
+        });
+
+        cboVoitureDispoInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboVoitureDispoInscrireLeconActionPerformed(evt);
+            }
+        });
+
         btnSinscrireInscrireLecon.setText("S'inscire");
         btnSinscrireInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,23 +99,21 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jcInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(58, 58, 58)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblHoraireInscrireLecon)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtHoraireInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cboPermisInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtHoraireInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cboPermisInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(99, 99, 99)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboVoitureDispoInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboMoniteurDispoInscrireLecon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
+                                .addGap(167, 167, 167)
                                 .addComponent(btnSinscrireInscrireLecon))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -137,11 +149,13 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctrlMoniteur = new CtrlMoniteur();
         ctrlVehicule = new CtrlVehicule();
+        ctrlLecon = new CtrlLecon();
         Date date = jcInscrireLecon.getDate();
         String heure = txtHoraireInscrireLecon.getText();
         int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(cboMoniteurDispoInscrireLecon.getSelectedItem().toString());
-        int idUser = user.getIdUser();
+        int idUser = user.getCodeEleve();
         String immatriculation = ctrlVehicule.getImmatriculationByModele(cboVoitureDispoInscrireLecon.getSelectedItem().toString());
+        ctrlLecon.insertLecon(date, heure, idMoniteur, idUser, immatriculation, 1);
     }//GEN-LAST:event_btnSinscrireInscrireLeconActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -188,6 +202,14 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cboPermisInscrireLeconActionPerformed
+
+    private void cboVoitureDispoInscrireLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVoitureDispoInscrireLeconActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboVoitureDispoInscrireLeconActionPerformed
+
+    private void cboMoniteurDispoInscrireLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMoniteurDispoInscrireLeconActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMoniteurDispoInscrireLeconActionPerformed
 
     /**
      * @param args the command line arguments
