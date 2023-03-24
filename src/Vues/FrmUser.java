@@ -37,6 +37,7 @@ public class FrmUser extends javax.swing.JFrame {
         btnVisualiserPlanning = new javax.swing.JButton();
         btnInscrire = new javax.swing.JButton();
         lblEleve = new javax.swing.JLabel();
+        btnStat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,21 +65,29 @@ public class FrmUser extends javax.swing.JFrame {
         lblEleve.setForeground(new java.awt.Color(0, 255, 51));
         lblEleve.setText("Eleve");
 
+        btnStat.setText("Graphique nombre de lecons par vehicule");
+        btnStat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInscrire)
-                    .addComponent(btnVisualiserPlanning)
-                    .addComponent(btnModifInfo))
-                .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblEleve, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnStat)
+                    .addComponent(btnInscrire)
+                    .addComponent(btnVisualiserPlanning)
+                    .addComponent(btnModifInfo))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +98,9 @@ public class FrmUser extends javax.swing.JFrame {
                 .addComponent(btnVisualiserPlanning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInscrire)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnStat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(lblEleve)
                 .addContainerGap())
         );
@@ -113,6 +124,12 @@ public class FrmUser extends javax.swing.JFrame {
        FrmEleveVisualiserPlanning frm = new FrmEleveVisualiserPlanning(user);
        frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserPlanningActionPerformed
+
+    private void btnStatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatActionPerformed
+        // TODO add your handling code here:
+        FrmEleveStats frm = new FrmEleveStats(user);
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnStatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +169,7 @@ public class FrmUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInscrire;
     private javax.swing.JButton btnModifInfo;
+    private javax.swing.JButton btnStat;
     private javax.swing.JButton btnVisualiserPlanning;
     private javax.swing.JLabel lblEleve;
     // End of variables declaration//GEN-END:variables

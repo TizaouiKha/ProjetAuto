@@ -35,6 +35,7 @@ public class FrmAdmin extends javax.swing.JFrame {
         btnVisualiserEleve = new javax.swing.JButton();
         btnVisualiserMoniteur = new javax.swing.JButton();
         lblAdmin = new javax.swing.JLabel();
+        btnGraphVehiculePlusUtiliser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,7 +74,7 @@ public class FrmAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnVisualiserLecon.setText("Visualiser leçon ");
+        btnVisualiserLecon.setText("Visualiser les leçon d'un moniteur avec un eleve");
         btnVisualiserLecon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisualiserLeconActionPerformed(evt);
@@ -97,28 +98,40 @@ public class FrmAdmin extends javax.swing.JFrame {
         lblAdmin.setForeground(new java.awt.Color(255, 0, 51));
         lblAdmin.setText("Responsable");
 
+        btnGraphVehiculePlusUtiliser.setText("Graphique véhicule les plus utilisés");
+        btnGraphVehiculePlusUtiliser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGraphVehiculePlusUtiliserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAjouterCategorie)
-                    .addComponent(btnModifCategorie)
-                    .addComponent(btnModifVehicule)
-                    .addComponent(btnAjouterVehicule))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVisualiserMoniteur)
-                    .addComponent(btnVisualiserEleve)
-                    .addComponent(btnVisualiserLecon)
-                    .addComponent(btnAjouterMoniteur))
-                .addGap(94, 94, 94))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAdmin)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnGraphVehiculePlusUtiliser)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAjouterCategorie)
+                            .addComponent(btnModifCategorie)
+                            .addComponent(btnModifVehicule)
+                            .addComponent(btnAjouterVehicule))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVisualiserMoniteur)
+                            .addComponent(btnVisualiserEleve)
+                            .addComponent(btnVisualiserLecon)
+                            .addComponent(btnAjouterMoniteur))
+                        .addGap(94, 94, 94))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +154,9 @@ public class FrmAdmin extends javax.swing.JFrame {
                         .addComponent(btnAjouterCategorie)
                         .addGap(18, 18, 18)
                         .addComponent(btnModifCategorie)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGraphVehiculePlusUtiliser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(lblAdmin)
                 .addContainerGap())
         );
@@ -190,6 +205,12 @@ public class FrmAdmin extends javax.swing.JFrame {
     frm.setVisible(true);
     }//GEN-LAST:event_btnVisualiserEleveActionPerformed
 
+    private void btnGraphVehiculePlusUtiliserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphVehiculePlusUtiliserActionPerformed
+        // TODO add your handling code here:
+        FrmAdminGraphVehiculePlusUtiliser frm = new FrmAdminGraphVehiculePlusUtiliser();
+        frm.setVisible(true);
+    }//GEN-LAST:event_btnGraphVehiculePlusUtiliserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +250,7 @@ public class FrmAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnAjouterCategorie;
     private javax.swing.JButton btnAjouterMoniteur;
     private javax.swing.JButton btnAjouterVehicule;
+    private javax.swing.JButton btnGraphVehiculePlusUtiliser;
     private javax.swing.JButton btnModifCategorie;
     private javax.swing.JButton btnModifVehicule;
     private javax.swing.JButton btnVisualiserEleve;

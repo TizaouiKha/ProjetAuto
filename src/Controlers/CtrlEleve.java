@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,5 +92,20 @@ public class CtrlEleve {
         } catch (SQLException ex) {
             Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public ArrayList<String> getAllNomEleve(){
+        ArrayList<String>lesNomsEleve = new ArrayList<>();
+        try {
+            ps = cnx.prepareStatement("select Nom  from eleve ");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                lesNomsEleve.add(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesNomsEleve;
     }
 }

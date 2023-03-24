@@ -23,27 +23,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnAjouterCategorie" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnModifCategorie" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnModifVehicule" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAjouterVehicule" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnVisualiserMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnVisualiserEleve" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnVisualiserLecon" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAjouterMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnGraphVehiculePlusUtiliser" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnAjouterCategorie" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnModifCategorie" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnModifVehicule" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAjouterVehicule" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnVisualiserMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVisualiserEleve" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVisualiserLecon" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAjouterMoniteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,7 +79,9 @@
                       <Component id="btnModifCategorie" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="85" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnGraphVehiculePlusUtiliser" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
               <Component id="lblAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -121,7 +131,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVisualiserLecon">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Visualiser le&#xe7;on "/>
+        <Property name="text" type="java.lang.String" value="Visualiser les le&#xe7;on d&apos;un moniteur avec un eleve"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualiserLeconActionPerformed"/>
@@ -150,6 +160,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Responsable"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnGraphVehiculePlusUtiliser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Graphique v&#xe9;hicule les plus utilis&#xe9;s"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGraphVehiculePlusUtiliserActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

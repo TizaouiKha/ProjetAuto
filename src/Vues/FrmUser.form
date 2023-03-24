@@ -23,19 +23,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnInscrire" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnVisualiserPlanning" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnModifInfo" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="143" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="lblEleve" min="-2" pref="37" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnStat" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnInscrire" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVisualiserPlanning" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnModifInfo" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,7 +49,9 @@
               <Component id="btnVisualiserPlanning" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnInscrire" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnStat" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="64" max="32767" attributes="0"/>
               <Component id="lblEleve" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -87,6 +90,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Eleve"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnStat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Graphique nombre de lecons par vehicule"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStatActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
