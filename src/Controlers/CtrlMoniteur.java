@@ -52,7 +52,7 @@ public class CtrlMoniteur {
     public ArrayList<String> getAllNomMoniteur(){
         ArrayList<String>lesNomsMoniteurs= new ArrayList<>();
         try {
-            ps = cnx.prepareStatement("select nom from moniteur ");
+            ps = cnx.prepareStatement("select Nom from moniteur order by Nom");
             rs = ps.executeQuery();
             while(rs.next()){
                 lesNomsMoniteurs.add(rs.getString("nom"));

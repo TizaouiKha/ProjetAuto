@@ -8,6 +8,7 @@ import Controlers.CtrlEleve;
 import Controlers.CtrlLecon;
 import Entities.Lecon;
 import Tools.ConnexionBDD;
+import Tools.ModelJTable;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -17,16 +18,10 @@ import javax.swing.tree.DefaultTreeModel;
  */
 public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame {
 
-    DefaultMutableTreeNode racine;
-    DefaultTreeModel model;
-    DefaultMutableTreeNode Mois;
-    DefaultMutableTreeNode Jour;
-    DefaultMutableTreeNode Heure;
-    DefaultMutableTreeNode Moniteur;
-    DefaultMutableTreeNode Immatriculation;
     CtrlLecon ctrlLecon;
     CtrlEleve ctrlEleve;
     ConnexionBDD maCnx;
+    ModelJTable mdl;
     public FrmAdministrateurVisualiserPlanningEleve() {
         initComponents();
     }
@@ -41,11 +36,11 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
     private void initComponents() {
 
         lblCodeEleve = new javax.swing.JLabel();
-        txtCodeEleve = new javax.swing.JTextField();
         btnVisualiser = new javax.swing.JButton();
         btnAnnuler = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        trVisualiserEleve = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEleve = new javax.swing.JTable();
+        cboEleve = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -54,7 +49,7 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
             }
         });
 
-        lblCodeEleve.setText("Code élève: ");
+        lblCodeEleve.setText("Nom Eleve:");
 
         btnVisualiser.setText("Visualiser");
         btnVisualiser.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +60,18 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
 
         btnAnnuler.setText("Annuler");
 
-        jScrollPane1.setViewportView(trVisualiserEleve);
+        tblEleve.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblEleve);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,13 +86,15 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                         .addComponent(btnAnnuler))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(lblCodeEleve)
-                        .addGap(38, 38, 38)
-                        .addComponent(txtCodeEleve, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addComponent(lblCodeEleve, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(cboEleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,14 +102,14 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodeEleve)
-                    .addComponent(txtCodeEleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboEleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVisualiser)
                     .addComponent(btnAnnuler))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,33 +118,22 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
 
     private void btnVisualiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserActionPerformed
         // TODO add your handling code here:
+        mdl= new ModelJTable();
         ctrlLecon = new CtrlLecon();
         ctrlEleve = new CtrlEleve();
-        racine.removeAllChildren();
-        racine = new DefaultMutableTreeNode("Nom Eleve: " +ctrlEleve.getNomEleveById(Integer.parseInt(txtCodeEleve.getText())));
-        for(Lecon lecon : ctrlLecon.getAllLeconByIdEleve(Integer.parseInt(txtCodeEleve.getText()))){
-            Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
-            Jour = new DefaultMutableTreeNode("Jour:"+lecon.getJour());
-            Heure = new DefaultMutableTreeNode("Heure:"+lecon.getHeure());
-            Moniteur = new DefaultMutableTreeNode("Nom Moniteur:"+lecon.getNomMoniteur());
-            Immatriculation = new DefaultMutableTreeNode("Immatriculation:"+lecon.getImmatriculation());
-            Heure.add(Immatriculation);
-            Heure.add(Moniteur);
-            Jour.add(Heure);
-            Mois.add(Jour);
-            racine.add(Mois);
-        }
-        model=  new DefaultTreeModel(racine);
-        trVisualiserEleve.setModel(model);
-        
+        String nomEleve =cboEleve.getSelectedItem().toString();
+        int idEleve = ctrlEleve.getIdEleveByNom(nomEleve);
+        mdl.loadDatasPlanningEleve(ctrlLecon.getAllLeconByIdEleve(idEleve));
+        tblEleve.setModel(mdl);
     }//GEN-LAST:event_btnVisualiserActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         maCnx = new ConnexionBDD();
-        racine = new DefaultMutableTreeNode("Toutes les leçons");
-        model = new DefaultTreeModel(racine);
-        trVisualiserEleve.setModel(model);
+        ctrlEleve = new CtrlEleve();
+        for(String Eleve : ctrlEleve.getAllNomEleve()){
+            cboEleve.addItem(Eleve);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -178,9 +175,9 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnVisualiser;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> cboEleve;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCodeEleve;
-    private javax.swing.JTree trVisualiserEleve;
-    private javax.swing.JTextField txtCodeEleve;
+    private javax.swing.JTable tblEleve;
     // End of variables declaration//GEN-END:variables
 }

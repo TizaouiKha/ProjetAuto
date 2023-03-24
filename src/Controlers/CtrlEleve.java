@@ -96,7 +96,7 @@ public class CtrlEleve {
     public ArrayList<String> getAllNomEleve(){
         ArrayList<String>lesNomsEleve = new ArrayList<>();
         try {
-            ps = cnx.prepareStatement("select Nom  from eleve ");
+            ps = cnx.prepareStatement("select Nom  from eleve order by Nom ");
             rs = ps.executeQuery();
             while(rs.next()){
                 lesNomsEleve.add(rs.getString(1));

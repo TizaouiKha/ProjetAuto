@@ -9,6 +9,7 @@ import Controlers.CtrlLecon;
 import Controlers.CtrlMoniteur;
 import Entities.Lecon;
 import Tools.ConnexionBDD;
+import Tools.ModelJTable;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -21,13 +22,7 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
     /**
      * Creates new form FrmAdministrateurVisualiserPlanningMoniteur
      */
-    DefaultMutableTreeNode racine;
-    DefaultTreeModel model;
-    DefaultMutableTreeNode Mois;
-    DefaultMutableTreeNode Jour;
-    DefaultMutableTreeNode Heure;
-    DefaultMutableTreeNode Eleve;
-    DefaultMutableTreeNode Immatriculation;
+    ModelJTable mdl;
     CtrlLecon ctrlLecon;
     CtrlMoniteur ctrlMoniteur;
     ConnexionBDD maCnx;
@@ -45,20 +40,20 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
     private void initComponents() {
 
         lblCodeMoniteur = new javax.swing.JLabel();
-        txtCodeMoniteur = new javax.swing.JTextField();
         btnVisualiser = new javax.swing.JButton();
         btnAnnuler = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        trVisualiserMoniteur = new javax.swing.JTree();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMoniteur = new javax.swing.JTable();
+        cboMoniteur = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        lblCodeMoniteur.setText("Code Moniteur: ");
+        lblCodeMoniteur.setText("Nom Moniteur:");
 
         btnVisualiser.setText("Visualiser");
         btnVisualiser.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +64,18 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
 
         btnAnnuler.setText("Annuler");
 
-        jScrollPane1.setViewportView(trVisualiserMoniteur);
+        tblMoniteur.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblMoniteur);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,19 +84,21 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btnVisualiser)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(btnVisualiser))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(lblCodeMoniteur)))
                         .addGap(35, 35, 35)
-                        .addComponent(btnAnnuler))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAnnuler)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lblCodeMoniteur)
-                        .addGap(38, 38, 38)
-                        .addComponent(txtCodeMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                        .addGap(132, 132, 132)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,14 +106,14 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodeMoniteur)
-                    .addComponent(txtCodeMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVisualiser)
                     .addComponent(btnAnnuler))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,33 +122,22 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
 
     private void btnVisualiserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserActionPerformed
         // TODO add your handling code here:
+        mdl= new ModelJTable();
         ctrlLecon = new CtrlLecon();
         ctrlMoniteur = new CtrlMoniteur();
-        racine.removeAllChildren();
-        racine = new DefaultMutableTreeNode("Nom Moniteur: " +ctrlMoniteur.getNomMoniteurById(Integer.parseInt(txtCodeMoniteur.getText())));
-        for(Lecon lecon : ctrlLecon.getAllLeconByIdMoniteur(Integer.parseInt(txtCodeMoniteur.getText()))){
-            Mois = new DefaultMutableTreeNode("Mois:"+lecon.getMois());
-            Jour = new DefaultMutableTreeNode("Jour:"+lecon.getJour());
-            Heure = new DefaultMutableTreeNode("Heure:"+lecon.getHeure());
-            Eleve = new DefaultMutableTreeNode("Code Eleve:"+lecon.getNomEleve());
-            Immatriculation = new DefaultMutableTreeNode("Immatriculation:"+lecon.getImmatriculation());
-            Jour.add(Immatriculation);
-            Jour.add(Eleve);
-            Jour.add(Heure);
-            Mois.add(Jour);
-            racine.add(Mois);
-        }
-        model=  new DefaultTreeModel(racine);
-        trVisualiserMoniteur.setModel(model);
-
+        String nomMoniteur =cboMoniteur.getSelectedItem().toString();
+        int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(nomMoniteur);
+        mdl.loadDatasPlanningMoniteur(ctrlLecon.getAllLeconByIdMoniteur(idMoniteur));
+        tblMoniteur.setModel(mdl);
     }//GEN-LAST:event_btnVisualiserActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         maCnx = new ConnexionBDD();
-        racine = new DefaultMutableTreeNode("Toutes les leçons");
-        model = new DefaultTreeModel(racine);
-        trVisualiserMoniteur.setModel(model);
+        ctrlMoniteur = new CtrlMoniteur();
+        for(String Moniteur : ctrlMoniteur.getAllNomMoniteur()){
+            cboMoniteur.addItem(Moniteur);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -181,9 +178,9 @@ public class FrmAdministrateurVisualiserPlanningMoniteur extends javax.swing.JFr
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnVisualiser;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> cboMoniteur;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCodeMoniteur;
-    private javax.swing.JTree trVisualiserMoniteur;
-    private javax.swing.JTextField txtCodeMoniteur;
+    private javax.swing.JTable tblMoniteur;
     // End of variables declaration//GEN-END:variables
 }
