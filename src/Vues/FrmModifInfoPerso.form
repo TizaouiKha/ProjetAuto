@@ -41,15 +41,16 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtAdresseModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNomModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPrenomModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="cboSexeModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jdcDateNaissModifInfoPerso" alignment="0" pref="92" max="32767" attributes="0"/>
-                                  <Component id="txtCodePostalModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtNomModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtPrenomModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboSexeModifInfoPerso" alignment="0" pref="92" max="32767" attributes="0"/>
+                                      <Component id="txtCodePostalModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jdcDateNaissModifInfoPerso" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -64,11 +65,13 @@
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtVilleModifInfoPerso" alignment="0" pref="91" max="32767" attributes="0"/>
-                                  <Component id="txtTelephoneModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtLoginModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMdpModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtTelephoneModifInfoPerso" alignment="0" pref="91" max="32767" attributes="0"/>
+                                      <Component id="txtLoginModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtMdpModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtVilleModifInfoPerso" min="-2" pref="113" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -76,11 +79,12 @@
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                               <Component id="btnAnnulerModifInfoPerso" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="txtAdresseModifInfoPerso" alignment="0" min="-2" pref="129" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="lblTitreModifInfoPerso" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="163" max="32767" attributes="0"/>
+              <EmptySpace pref="141" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
