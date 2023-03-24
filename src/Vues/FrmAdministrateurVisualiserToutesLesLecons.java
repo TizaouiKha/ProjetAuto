@@ -58,7 +58,13 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
 
         lblMoniteurVisuToutesLecons.setText("Moniteur :");
 
-        lblEleveVisuToutesLecons.setText("Nom Eleve :");
+        cboMoniteur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMoniteurActionPerformed(evt);
+            }
+        });
+
+        lblEleveVisuToutesLecons.setText("Nom  Élève :");
 
         tblVisuToutesLecons.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,9 +91,10 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(284, Short.MAX_VALUE)
                 .addComponent(lblTitreVisuToutesLecons)
                 .addGap(162, 162, 162))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -100,12 +107,9 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
                             .addComponent(cboMoniteur, 0, 120, Short.MAX_VALUE)
                             .addComponent(cboEleves, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(358, 358, 358)
+                        .addGap(357, 357, 357)
                         .addComponent(btnVisualiserVisuToutesLecons)))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,10 +124,10 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
                     .addComponent(lblEleveVisuToutesLecons)
                     .addComponent(cboEleves, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addComponent(btnVisualiserVisuToutesLecons)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,10 +140,6 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         ctrlMoniteur = new CtrlMoniteur();
         for(String Moniteur : ctrlMoniteur.getAllNomMoniteur()){
             cboMoniteur.addItem(Moniteur);
-        }
-        ctrlEleve = new CtrlEleve();
-        for(String Eleve : ctrlEleve.getAllNomEleve()){
-            cboEleves.addItem(Eleve);
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -155,6 +155,16 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         mdl.loadDatasLeconsByMoniteurAndByEleve(ctrlLecon.getAllLeconByIdMoniteurAndByIdEleve(idEleve, idMoniteur));
         tblVisuToutesLecons.setModel(mdl);
     }//GEN-LAST:event_btnVisualiserVisuToutesLeconsActionPerformed
+
+    private void cboMoniteurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMoniteurActionPerformed
+        // TODO add your handling code here:
+        ctrlEleve = new CtrlEleve();
+        ctrlMoniteur =  new CtrlMoniteur();
+        cboEleves.removeAllItems();
+        for(String Eleve : ctrlEleve.getAllNomEleveByIdMoniteur(ctrlMoniteur.getIdMoniteurByNom(cboMoniteur.getSelectedItem().toString()))){
+            cboEleves.addItem(Eleve);
+        }
+    }//GEN-LAST:event_cboMoniteurActionPerformed
 
     /**
      * @param args the command line arguments
