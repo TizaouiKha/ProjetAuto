@@ -41,11 +41,8 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
         txtLibelleAjoutCategorie = new javax.swing.JTextField();
         sprPrixAjoutCategorie = new javax.swing.JSpinner();
         btnAjouterAjoutCategorie = new javax.swing.JButton();
-        btnAnnulerAjoutCategorie = new javax.swing.JButton();
-        lblCodeCategorie = new javax.swing.JLabel();
-        txtCodeCategorieAjoutCategorie = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
@@ -64,16 +61,14 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
 
         lblPrixAjoutCategorie.setText("Prix :");
 
+        sprPrixAjoutCategorie.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.5d));
+
         btnAjouterAjoutCategorie.setText("Ajouter");
         btnAjouterAjoutCategorie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAjouterAjoutCategorieActionPerformed(evt);
             }
         });
-
-        btnAnnulerAjoutCategorie.setText("Annuler");
-
-        lblCodeCategorie.setText("Code Categorie :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,29 +83,22 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLibelleAjoutCategorie)
-                            .addComponent(lblPrixAjoutCategorie)
-                            .addComponent(lblCodeCategorie))
-                        .addGap(18, 18, 18)
+                            .addComponent(lblPrixAjoutCategorie))
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(sprPrixAjoutCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLibelleAjoutCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(txtCodeCategorieAjoutCategorie)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(btnAjouterAjoutCategorie)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAnnulerAjoutCategorie)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                            .addComponent(sprPrixAjoutCategorie))))
+                .addContainerGap(176, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAjouterAjoutCategorie)
+                .addGap(234, 234, 234))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblTitreAjoutCategorie)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodeCategorie)
-                    .addComponent(txtCodeCategorieAjoutCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLibelleAjoutCategorie)
                     .addComponent(txtLibelleAjoutCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -119,10 +107,8 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
                     .addComponent(lblPrixAjoutCategorie)
                     .addComponent(sprPrixAjoutCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAjouterAjoutCategorie)
-                    .addComponent(btnAnnulerAjoutCategorie))
-                .addGap(0, 104, Short.MAX_VALUE))
+                .addComponent(btnAjouterAjoutCategorie)
+                .addGap(0, 107, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,14 +122,11 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
 
     private void btnAjouterAjoutCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterAjoutCategorieActionPerformed
         // TODO add your handling code here:
-        int codeCategorie = Integer.parseInt(txtCodeCategorieAjoutCategorie.getText());
         String libelle = txtLibelleAjoutCategorie.getText();
-        double prix = Integer.parseInt(String.valueOf(sprPrixAjoutCategorie.getValue()));
-       
-        
+        double prix = Double.parseDouble(String.valueOf(sprPrixAjoutCategorie.getValue()));
         ctrlCategorie = new CtrlCategorie();
-        ctrlCategorie.AjoutCategorie(codeCategorie, libelle, prix);
-        // TODO add your handling code here:
+        ctrlCategorie.AjoutCategorie( libelle, prix);
+        dispose();
     }//GEN-LAST:event_btnAjouterAjoutCategorieActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -188,13 +171,10 @@ public class FrmAjoutCategorie extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAjouterAjoutCategorie;
-    private javax.swing.JButton btnAnnulerAjoutCategorie;
-    private javax.swing.JLabel lblCodeCategorie;
     private javax.swing.JLabel lblLibelleAjoutCategorie;
     private javax.swing.JLabel lblPrixAjoutCategorie;
     private javax.swing.JLabel lblTitreAjoutCategorie;
     private javax.swing.JSpinner sprPrixAjoutCategorie;
-    private javax.swing.JTextField txtCodeCategorieAjoutCategorie;
     private javax.swing.JTextField txtLibelleAjoutCategorie;
     // End of variables declaration//GEN-END:variables
 }

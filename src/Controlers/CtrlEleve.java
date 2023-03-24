@@ -108,4 +108,20 @@ public class CtrlEleve {
         }
         return lesNomsEleve;
     }
+    public ArrayList<String> getAllNomEleveByIdMoniteur(int idMoniteur){
+        ArrayList<String>lesNomsEleve = new ArrayList<>();
+        try {
+            ps = cnx.prepareStatement("select DISTINCT(Nom)  from eleve join lecon on eleve.CodeELeve = lecon.CodeEleve where lecon.CodeMoniteur = ? order by Nom; ");
+            ps.setInt(1, idMoniteur);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                lesNomsEleve.add(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesNomsEleve;
+    }
 }

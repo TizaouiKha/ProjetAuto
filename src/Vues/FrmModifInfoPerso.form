@@ -49,19 +49,14 @@
                               </Group>
                               <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblLoginModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTelephoneModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblMdpModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblTelephoneModifInfoPerso" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblLoginModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblMdpModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblVilleModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblVilleModifInfoPerso" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtVilleModifInfoPerso" max="32767" attributes="0"/>
                                   <Component id="txtTelephoneModifInfoPerso" alignment="0" max="32767" attributes="0"/>
@@ -73,13 +68,12 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="btnModifierModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                              <Component id="btnAnnulerModifInfoPerso" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtCodePostalModifInfoPerso" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtAdresseModifInfoPerso" alignment="0" pref="129" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtCodePostalModifInfoPerso" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtAdresseModifInfoPerso" alignment="0" pref="129" max="32767" attributes="0"/>
+                                  <Component id="btnModifierModifInfoPerso" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -128,13 +122,11 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jdcDateNaissModifInfoPerso" min="-2" max="-2" attributes="0"/>
                   <Component id="txtMdpModifInfoPerso" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblDateDeNaissanceModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblMdpModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblDateDeNaissanceModifInfoPerso" alignment="1" max="32767" attributes="0"/>
+                  <Component id="lblMdpModifInfoPerso" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -146,12 +138,9 @@
                   <Component id="txtCodePostalModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCodePostalModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="54" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnModifierModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAnnulerModifInfoPerso" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <Component id="btnModifierModifInfoPerso" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -181,11 +170,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifierModifInfoPersoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAnnulerModifInfoPerso">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Annuler"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblNomModifInfoPerso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nom :"/>
@@ -201,7 +185,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrenomModifInfoPerso">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Prenom :"/>
+        <Property name="text" type="java.lang.String" value="Pr&#xe9;nom :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSexeModifInfoPerso">

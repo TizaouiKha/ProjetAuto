@@ -91,7 +91,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnAjouterVehicule">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter Vehicule"/>
+        <Property name="text" type="java.lang.String" value="Ajouter V&#xe9;hicule"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjouterVehiculeActionPerformed"/>
@@ -99,7 +99,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnModifVehicule">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Modifier Vehicule"/>
+        <Property name="text" type="java.lang.String" value="Modifier V&#xe9;hicule"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifVehiculeActionPerformed"/>
@@ -107,7 +107,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnModifCategorie">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Modifier Categorie"/>
+        <Property name="text" type="java.lang.String" value="Modifier Cat&#xe9;gorie"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifCategorieActionPerformed"/>
@@ -115,7 +115,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAjouterCategorie">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ajouter Categorie"/>
+        <Property name="text" type="java.lang.String" value="Ajouter Cat&#xe9;gorie"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAjouterCategorieActionPerformed"/>
@@ -131,7 +131,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVisualiserLecon">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Visualiser les le&#xe7;on d&apos;un moniteur avec un eleve"/>
+        <Property name="text" type="java.lang.String" value="Visualiser les le&#xe7;ons d&apos;un moniteur avec un &#xe9;l&#xe8;ve"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualiserLeconActionPerformed"/>
@@ -139,7 +139,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVisualiserEleve">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Visualiser planning de l&apos;eleve"/>
+        <Property name="text" type="java.lang.String" value="Visualiser planning de l&apos;&#xe9;l&#xe8;ve"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualiserEleveActionPerformed"/>

@@ -11,6 +11,7 @@ import Entities.User;
 import Entities.Vehicule;
 import Tools.ConnexionBDD;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,7 +61,7 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel1.setText("S'inscrire a une lecon");
+        jLabel1.setText("S'inscrire à une leçon");
 
         cboPermisInscrireLecon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Permis Voiture", "Permis Moto", "Permis Camion" }));
         cboPermisInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +84,7 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
             }
         });
 
-        btnSinscrireInscrireLecon.setText("S'inscire");
+        btnSinscrireInscrireLecon.setText("S'inscrire");
         btnSinscrireInscrireLecon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSinscrireInscrireLeconActionPerformed(evt);
@@ -155,7 +156,13 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(cboMoniteurDispoInscrireLecon.getSelectedItem().toString());
         int idUser = user.getCodeEleve();
         String immatriculation = ctrlVehicule.getImmatriculationByModele(cboVoitureDispoInscrireLecon.getSelectedItem().toString());
-        ctrlLecon.insertLecon(date, heure, idMoniteur, idUser, immatriculation, 1);
+        if(ctrlLecon.getLeconByDateAndEleveAndMoniteur(date, heure,idMoniteur, idUser)==true){
+            JOptionPane.showMessageDialog(this  , "Vous etes deja inscrit a cette heure","Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            ctrlLecon.insertLecon(date, heure, idMoniteur, idUser, immatriculation, 1);
+            dispose();
+        }
     }//GEN-LAST:event_btnSinscrireInscrireLeconActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

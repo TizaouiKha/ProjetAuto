@@ -77,7 +77,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnInscrire">
       <Properties>
-        <Property name="text" type="java.lang.String" value="S&apos;inscrire a une le&#xe7;on"/>
+        <Property name="text" type="java.lang.String" value="S&apos;inscrire &#xe0; une le&#xe7;on"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInscrireActionPerformed"/>
@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnStat">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Graphique nombre de lecons par vehicule"/>
+        <Property name="text" type="java.lang.String" value="Graphique nombre de le&#xe7;ons par v&#xe9;hicule"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStatActionPerformed"/>

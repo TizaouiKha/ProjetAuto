@@ -52,7 +52,6 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
         txtVilleAjoutMoniteur = new javax.swing.JTextField();
         txtTelephoneAjoutMoniteur = new javax.swing.JTextField();
         btnAjouterAjoutMoniteur = new javax.swing.JButton();
-        btnAnnulerAjoutMoniteur = new javax.swing.JButton();
         lblNomAjoutMoniteur = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblPrenomAjoutMoniteur = new javax.swing.JLabel();
@@ -64,10 +63,8 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
         lblTelephoneAjoutMoniteur = new javax.swing.JLabel();
         cboSexeAjoutMoniteur = new javax.swing.JComboBox<>();
         jdcDateNaissAjoutMoniteur = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        txtCodeMoniteurAjoutMoniteur = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -87,14 +84,12 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
             }
         });
 
-        btnAnnulerAjoutMoniteur.setText("Annuler");
-
         lblNomAjoutMoniteur.setText("Nom :");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel2.setText("Ajout Moniteur");
 
-        lblPrenomAjoutMoniteur.setText("Prenom :");
+        lblPrenomAjoutMoniteur.setText("Prénom :");
 
         lblSexeAjoutMoniteur.setText("Sexe :");
 
@@ -109,8 +104,6 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
         lblTelephoneAjoutMoniteur.setText("Téléphone :");
 
         cboSexeAjoutMoniteur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme" }));
-
-        jLabel1.setText("Code Moniteur :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,34 +121,29 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
                     .addComponent(lblSexeAjoutMoniteur)
                     .addComponent(lblDateDeNaissanceModifInfoPerso)
                     .addComponent(lblAdresseAjoutMoniteur)
-                    .addComponent(lblCodePostalAjoutMoniteur)
-                    .addComponent(jLabel1))
+                    .addComponent(lblCodePostalAjoutMoniteur))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAjouterAjoutMoniteur)
-                        .addGap(93, 93, 93)
-                        .addComponent(btnAnnulerAjoutMoniteur))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCodeMoniteurAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboSexeAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdcDateNaissAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNomAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPrenomAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAdresseAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodePostalAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(88, 88, 88)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNomAjoutMoniteur, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(txtPrenomAjoutMoniteur, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCodePostalAjoutMoniteur)
+                            .addComponent(txtAdresseAjoutMoniteur, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblTelephoneAjoutMoniteur)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblVilleAjoutMoniteur)
-                                .addGap(31, 31, 31)))
+                            .addComponent(lblTelephoneAjoutMoniteur)
+                            .addComponent(lblVilleAjoutMoniteur))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtVilleAjoutMoniteur, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                            .addComponent(txtTelephoneAjoutMoniteur))))
+                            .addComponent(txtTelephoneAjoutMoniteur)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jdcDateNaissAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                        .addComponent(cboSexeAjoutMoniteur, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(btnAjouterAjoutMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,11 +151,7 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCodeMoniteurAjoutMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomAjoutMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVilleAjoutMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,11 +182,9 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodePostalAjoutMoniteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodePostalAjoutMoniteur))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAjouterAjoutMoniteur)
-                    .addComponent(btnAnnulerAjoutMoniteur))
-                .addGap(83, 83, 83))
+                .addGap(57, 57, 57)
+                .addComponent(btnAjouterAjoutMoniteur)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,7 +201,6 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
     
     private void btnAjouterAjoutMoniteurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterAjoutMoniteurActionPerformed
         // TODO add your handling code here:
-        int CodeMoniteur = Integer.parseInt(txtCodeMoniteurAjoutMoniteur.getText());
         String Nom = txtNomAjoutMoniteur.getText();
         String Prenom = txtPrenomAjoutMoniteur.getText();
         
@@ -237,19 +218,14 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
         String ville = txtVilleAjoutMoniteur.getText();
         String telephone =txtTelephoneAjoutMoniteur.getText();
         ctrlMoniteur = new CtrlMoniteur();
-        ctrlMoniteur.AjoutMoniteur(CodeMoniteur, Nom, Prenom, sexe, datenaissance, adresse, codepostal, ville, telephone);
-        
+        ctrlMoniteur.AjoutMoniteur(Nom, Prenom, sexe, datenaissance, adresse, codepostal, ville, telephone);
+        dispose();
     }//GEN-LAST:event_btnAjouterAjoutMoniteurActionPerformed
     
     
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       maCnx = new ConnexionBDD();
-        
-    
-        
-        
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -290,9 +266,7 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAjouterAjoutMoniteur;
-    private javax.swing.JButton btnAnnulerAjoutMoniteur;
     private javax.swing.JComboBox<String> cboSexeAjoutMoniteur;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private com.toedter.calendar.JDateChooser jdcDateNaissAjoutMoniteur;
     private javax.swing.JLabel lblAdresseAjoutMoniteur;
@@ -304,7 +278,6 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelephoneAjoutMoniteur;
     private javax.swing.JLabel lblVilleAjoutMoniteur;
     private javax.swing.JTextField txtAdresseAjoutMoniteur;
-    private javax.swing.JTextField txtCodeMoniteurAjoutMoniteur;
     private javax.swing.JTextField txtCodePostalAjoutMoniteur;
     private javax.swing.JTextField txtNomAjoutMoniteur;
     private javax.swing.JTextField txtPrenomAjoutMoniteur;

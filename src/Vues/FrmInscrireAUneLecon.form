@@ -98,7 +98,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="20" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="S&apos;inscrire a une lecon"/>
+        <Property name="text" type="java.lang.String" value="S&apos;inscrire &#xe0; une le&#xe7;on"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cboPermisInscrireLecon">
@@ -153,7 +153,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSinscrireInscrireLecon">
       <Properties>
-        <Property name="text" type="java.lang.String" value="S&apos;inscire"/>
+        <Property name="text" type="java.lang.String" value="S&apos;inscrire"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSinscrireInscrireLeconActionPerformed"/>

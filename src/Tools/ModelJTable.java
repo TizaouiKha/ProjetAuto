@@ -75,12 +75,12 @@ public class ModelJTable extends AbstractTableModel {
         fireTableChanged(null);
     }
     public void loadDatasPlanningEleve(ArrayList<Lecon>lesLecons){
-        colonnes = new String[]{"Mois", "Date", "Heure","Type Permis", "Nom Moniteur", "Immatriculation"};
+        colonnes = new String[]{"Mois", "Jour", "Heure","Type de permis", "Nom du moniteur", "Immatriculation"};
         lignes = new Object[lesLecons.size()][6];
         int i = 0;
         for(Lecon lecon : lesLecons){
             lignes[i][0]= lecon.getMois();
-            lignes[i][1]= lecon.getDate();
+            lignes[i][1]= lecon.getJour();
             lignes[i][2]= lecon.getHeure();
             lignes[i][3]= lecon.getLibelleCategorie();
             lignes[i][4]= lecon.getNomMoniteur();
@@ -90,15 +90,15 @@ public class ModelJTable extends AbstractTableModel {
         fireTableChanged(null);
     }
     public void loadDatasPlanningMoniteur(ArrayList<Lecon>lesLecons){
-        colonnes = new String[]{"Mois", "Date", "Heure","Type Permis", "Nom Moniteur", "Immatriculation"};
+        colonnes = new String[]{"Mois", "Jour", "Heure","Type de permis", "Nom de l'élève", "Immatriculation"};
         lignes = new Object[lesLecons.size()][6];
         int i = 0;
         for(Lecon lecon : lesLecons){
             lignes[i][0]= lecon.getMois();
-            lignes[i][1]= lecon.getDate();
+            lignes[i][1]= lecon.getJour();
             lignes[i][2]= lecon.getHeure();
             lignes[i][3]= lecon.getLibelleCategorie();
-            lignes[i][4]= lecon.getNomMoniteur();
+            lignes[i][4]= lecon.getNomEleve();
             lignes[i][5]= lecon.getImmatriculation();
             i++;
         }

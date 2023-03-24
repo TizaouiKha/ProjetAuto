@@ -89,9 +89,9 @@ public class FrmEleveStats extends javax.swing.JFrame {
                 }
                 // Créer le graphique avec ses options
                 JFreeChart chart1 = ChartFactory.createLineChart(
-                        "Nombre de lecon par vehicule",
-                        "Nom des vehicules",
-                        "Nombre de lecon",
+                        "Nombre de leçons par véhicule",
+                        "Nom des véhicules",
+                        "Nombre de leçons",
                         donnees,
                         PlotOrientation.VERTICAL,true, true, false);
                 

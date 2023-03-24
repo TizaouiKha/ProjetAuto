@@ -58,7 +58,6 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
         txtLoginModifInfoPerso = new javax.swing.JTextField();
         txtMdpModifInfoPerso = new javax.swing.JTextField();
         btnModifierModifInfoPerso = new javax.swing.JButton();
-        btnAnnulerModifInfoPerso = new javax.swing.JButton();
         lblNomModifInfoPerso = new javax.swing.JLabel();
         lblTitreModifInfoPerso = new javax.swing.JLabel();
         lblPrenomModifInfoPerso = new javax.swing.JLabel();
@@ -87,14 +86,12 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
             }
         });
 
-        btnAnnulerModifInfoPerso.setText("Annuler");
-
         lblNomModifInfoPerso.setText("Nom :");
 
         lblTitreModifInfoPerso.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTitreModifInfoPerso.setText("Modification des informations personnelles");
 
-        lblPrenomModifInfoPerso.setText("Prenom :");
+        lblPrenomModifInfoPerso.setText("Prénom :");
 
         lblSexeModifInfoPerso.setText("Sexe :");
 
@@ -141,15 +138,12 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
                                     .addComponent(jdcDateNaissModifInfoPerso, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
                                 .addGap(51, 51, 51)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblLoginModifInfoPerso)
-                                            .addComponent(lblTelephoneModifInfoPerso)
-                                            .addComponent(lblMdpModifInfoPerso))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblVilleModifInfoPerso)
-                                        .addGap(31, 31, 31)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblTelephoneModifInfoPerso)
+                                        .addComponent(lblLoginModifInfoPerso, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblMdpModifInfoPerso, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(lblVilleModifInfoPerso))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtVilleModifInfoPerso)
                                     .addComponent(txtTelephoneModifInfoPerso)
@@ -158,12 +152,11 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
                                         .addComponent(txtMdpModifInfoPerso, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnModifierModifInfoPerso)
-                                .addGap(93, 93, 93)
-                                .addComponent(btnAnnulerModifInfoPerso))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCodePostalModifInfoPerso, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtAdresseModifInfoPerso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtCodePostalModifInfoPerso, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAdresseModifInfoPerso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(btnModifierModifInfoPerso))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTitreModifInfoPerso)
                         .addGap(9, 9, 9)))
@@ -198,12 +191,11 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cboSexeModifInfoPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jdcDateNaissModifInfoPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMdpModifInfoPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDateDeNaissanceModifInfoPerso)
-                        .addComponent(lblMdpModifInfoPerso)))
+                    .addComponent(lblDateDeNaissanceModifInfoPerso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblMdpModifInfoPerso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAdresseModifInfoPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,11 +204,9 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodePostalModifInfoPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodePostalModifInfoPerso))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModifierModifInfoPerso)
-                    .addComponent(btnAnnulerModifInfoPerso))
-                .addGap(83, 83, 83))
+                .addGap(57, 57, 57)
+                .addComponent(btnModifierModifInfoPerso)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -337,7 +327,6 @@ public class FrmModifInfoPerso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnnulerModifInfoPerso;
     private javax.swing.JButton btnModifierModifInfoPerso;
     private javax.swing.JComboBox<String> cboSexeModifInfoPerso;
     private com.toedter.calendar.JDateChooser jdcDateNaissModifInfoPerso;

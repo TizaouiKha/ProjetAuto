@@ -53,9 +53,9 @@ public class FrmAdminGraphVehiculePlusUtiliser extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(pnlGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(pnlGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,9 +82,9 @@ public class FrmAdminGraphVehiculePlusUtiliser extends javax.swing.JFrame {
                     donnees.setValue(nbLeconVehicule,"",nomVehicule);
                 }
                 JFreeChart chart1 = ChartFactory.createBarChart(
-                        "Nombre de lecon par vehicule",
-                        "Nombre de lecon",
-                        "Nom vehciule",
+                        "Nombre de leçons par véhicule",
+                        "Nombre de leçons",
+                        "Nom véhciule",
                         donnees,
                         PlotOrientation.VERTICAL,
                         false, true, false);

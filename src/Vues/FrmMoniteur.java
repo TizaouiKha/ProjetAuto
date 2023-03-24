@@ -37,7 +37,7 @@ public class FrmMoniteur extends javax.swing.JFrame {
         btnAjouterLicence = new javax.swing.JButton();
         lblMoniteur = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnModifInfoPerso.setText("Modifier ses Informations Personnelles");
         btnModifInfoPerso.addActionListener(new java.awt.event.ActionListener() {

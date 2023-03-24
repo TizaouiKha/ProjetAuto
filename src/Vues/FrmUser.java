@@ -55,7 +55,7 @@ public class FrmUser extends javax.swing.JFrame {
             }
         });
 
-        btnInscrire.setText("S'inscrire a une leçon");
+        btnInscrire.setText("S'inscrire à une leçon");
         btnInscrire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInscrireActionPerformed(evt);
@@ -65,7 +65,7 @@ public class FrmUser extends javax.swing.JFrame {
         lblEleve.setForeground(new java.awt.Color(0, 255, 51));
         lblEleve.setText("Eleve");
 
-        btnStat.setText("Graphique nombre de lecons par vehicule");
+        btnStat.setText("Graphique nombre de leçons par véhicule");
         btnStat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStatActionPerformed(evt);

@@ -169,5 +169,29 @@ public class CtrlLecon {
             Logger.getLogger(CtrlLecon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }   
+    public Boolean getLeconByDateAndEleveAndMoniteur(Date date,String Heure,  int idMoniteur, int idEleve){
+        Boolean bool=false;
+        try {
+            ps=cnx.prepareStatement("Select CodeLecon from Lecon " +
+                    "where MONTH(lecon.Date)=? "+
+                    "And DAY(lecon.Date) = ? "+
+                    "And lecon.Heure = ? "+
+                    "And CodeMoniteur = ? "+
+                    "And CodeEleve = ? ");
+            ps.setDate(1, new java.sql.Date(date.getTime()));
+            ps.setString(2, Heure);
+            ps.setInt(3, idMoniteur);
+            ps.setInt(4, idEleve);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                bool=true;
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlLecon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return bool;
+    }
  
 }

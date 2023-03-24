@@ -46,12 +46,11 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
         txtModeleModifVehicule = new javax.swing.JTextField();
         cboLibCategorieModifVehicule = new javax.swing.JComboBox<>();
         btnModifierModifVehicule = new javax.swing.JButton();
-        btnAnnulerModifVehicule = new javax.swing.JButton();
         sprAnneeModifVehicule = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblModifVehicule = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -77,8 +76,6 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                 btnModifierModifVehiculeActionPerformed(evt);
             }
         });
-
-        btnAnnulerModifVehicule.setText("Annuler");
 
         tblModifVehicule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,13 +118,9 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                             .addComponent(txtImmatriculationModifVehicule)
                             .addComponent(sprAnneeModifVehicule, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblLibCategorieModifVehicule)
-                            .addComponent(btnModifierModifVehicule))
+                        .addComponent(lblLibCategorieModifVehicule)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAnnulerModifVehicule)
-                            .addComponent(cboLibCategorieModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(cboLibCategorieModifVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -137,6 +130,9 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(btnModifierModifVehicule))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,11 +164,9 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnModifierModifVehicule)
-                    .addComponent(btnAnnulerModifVehicule))
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(btnModifierModifVehicule)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
@@ -258,7 +252,6 @@ public class FrmModiferVehicule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnnulerModifVehicule;
     private javax.swing.JButton btnModifierModifVehicule;
     private javax.swing.JComboBox<String> cboLibCategorieModifVehicule;
     private javax.swing.JScrollPane jScrollPane1;

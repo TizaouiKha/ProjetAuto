@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -45,15 +45,9 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblLibCategorieModifVehicule" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnModifierModifVehicule" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblLibCategorieModifVehicule" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnAnnulerModifVehicule" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboLibCategorieModifVehicule" min="-2" pref="107" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cboLibCategorieModifVehicule" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -68,6 +62,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+              <Component id="btnModifierModifVehicule" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,12 +107,9 @@
                       <Component id="jScrollPane1" min="-2" pref="174" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnModifierModifVehicule" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAnnulerModifVehicule" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="353" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="btnModifierModifVehicule" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="97" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -176,11 +171,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifierModifVehiculeActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAnnulerModifVehicule">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Annuler"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="sprAnneeModifVehicule">
     </Component>

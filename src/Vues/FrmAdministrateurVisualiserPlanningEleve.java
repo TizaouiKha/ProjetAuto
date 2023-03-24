@@ -37,7 +37,6 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
 
         lblCodeEleve = new javax.swing.JLabel();
         btnVisualiser = new javax.swing.JButton();
-        btnAnnuler = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEleve = new javax.swing.JTable();
         cboEleve = new javax.swing.JComboBox<>();
@@ -49,7 +48,7 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
             }
         });
 
-        lblCodeEleve.setText("Nom Eleve:");
+        lblCodeEleve.setText("Nom de l'élève:");
 
         btnVisualiser.setText("Visualiser");
         btnVisualiser.addActionListener(new java.awt.event.ActionListener() {
@@ -57,8 +56,6 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                 btnVisualiserActionPerformed(evt);
             }
         });
-
-        btnAnnuler.setText("Annuler");
 
         tblEleve.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,21 +77,17 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btnVisualiser)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnAnnuler))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(lblCodeEleve, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(cboEleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(cboEleve, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnVisualiser))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,13 +96,11 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodeEleve)
                     .addComponent(cboEleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVisualiser)
-                    .addComponent(btnAnnuler))
-                .addGap(47, 47, 47)
+                .addGap(34, 34, 34)
+                .addComponent(btnVisualiser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -173,7 +164,6 @@ public class FrmAdministrateurVisualiserPlanningEleve extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnnuler;
     private javax.swing.JButton btnVisualiser;
     private javax.swing.JComboBox<String> cboEleve;
     private javax.swing.JScrollPane jScrollPane2;

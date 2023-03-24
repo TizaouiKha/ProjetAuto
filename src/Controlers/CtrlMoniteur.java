@@ -81,20 +81,17 @@ public class CtrlMoniteur {
          return idMoniteur;
     }
 
-    public void AjoutMoniteur(int CodeMoniteur, String Nom, String Prenom, int sexe, String datenaissance, String adresse, String codepostal, String ville, String telephone){
+    public void AjoutMoniteur( String Nom, String Prenom, int sexe, String datenaissance, String adresse, String codepostal, String ville, String telephone){
         try {
-            ps = cnx.prepareStatement("Insert into moniteur VALUES(?,?,?,?,?,?,?,?,?)");
-            ps.setInt(1,CodeMoniteur);
-            ps.setString(2, Nom);
-            ps.setString(3, Prenom);
-            ps.setInt(4, sexe);
-            ps.setString(5, datenaissance);
-            ps.setString(6, adresse);
-            ps.setString(7, codepostal);
-            ps.setString(8, ville);
-            ps.setString(9, telephone);
-            
-            
+            ps = cnx.prepareStatement("Insert into moniteur(Nom, Prenom, Sexe, DateDeNaissance, Adresse1, CodePostal, Ville, Telephone) VALUES(?,?,?,?,?,?,?,?)");            
+            ps.setString(1, Nom);
+            ps.setString(2, Prenom);
+            ps.setInt(3, sexe);
+            ps.setString(4, datenaissance);
+            ps.setString(5, adresse);
+            ps.setString(6, codepostal);
+            ps.setString(7, ville);
+            ps.setString(8, telephone);            
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {

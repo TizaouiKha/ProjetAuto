@@ -4,12 +4,14 @@
  */
 package Vues;
 
+import Controlers.CtrlCategorie;
+
 /**
  *
  * @author Rosca
  */
 public class FrmModifierCategorie extends javax.swing.JFrame {
-
+    CtrlCategorie ctrlCategorie;
     /**
      * Creates new form FrmAjoutCategorie
      */
@@ -32,9 +34,8 @@ public class FrmModifierCategorie extends javax.swing.JFrame {
         txtLibelleModifierCategorie = new javax.swing.JTextField();
         sprPrixModifierCategorie = new javax.swing.JSpinner();
         btnAjouterModifierCategorie = new javax.swing.JButton();
-        btnAnnulerModifierCategorie = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
@@ -42,15 +43,21 @@ public class FrmModifierCategorie extends javax.swing.JFrame {
         });
 
         lblTitreModifierCategorie.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lblTitreModifierCategorie.setText("Modifier Categorie");
+        lblTitreModifierCategorie.setText("Modifier Catégorie");
 
         lblLibelleModifierCategorie.setText("Libelle :");
 
         lblPrixModifierCategorie.setText("Prix :");
 
-        btnAjouterModifierCategorie.setText("Ajouter");
+        sprPrixModifierCategorie.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 0.5d));
+        sprPrixModifierCategorie.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnAnnulerModifierCategorie.setText("Annuler");
+        btnAjouterModifierCategorie.setText("Modifier");
+        btnAjouterModifierCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjouterModifierCategorieActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,40 +66,37 @@ public class FrmModifierCategorie extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(lblTitreModifierCategorie))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLibelleModifierCategorie)
                             .addComponent(lblPrixModifierCategorie))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sprPrixModifierCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLibelleModifierCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtLibelleModifierCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(sprPrixModifierCategorie)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(220, 220, 220)
-                        .addComponent(btnAjouterModifierCategorie)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAnnulerModifierCategorie)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addComponent(btnAjouterModifierCategorie))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(lblTitreModifierCategorie)))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addComponent(lblTitreModifierCategorie)
-                .addGap(38, 38, 38)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLibelleModifierCategorie)
-                    .addComponent(txtLibelleModifierCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                    .addComponent(txtLibelleModifierCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLibelleModifierCategorie))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrixModifierCategorie)
                     .addComponent(sprPrixModifierCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAjouterModifierCategorie)
-                    .addComponent(btnAnnulerModifierCategorie))
+                .addComponent(btnAjouterModifierCategorie)
                 .addGap(0, 107, Short.MAX_VALUE))
         );
 
@@ -103,6 +107,15 @@ public class FrmModifierCategorie extends javax.swing.JFrame {
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentHidden
+
+    private void btnAjouterModifierCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterModifierCategorieActionPerformed
+        // TODO add your handling code here:
+        ctrlCategorie = new CtrlCategorie();
+        String libelle = txtLibelleModifierCategorie.getText();
+        double prix = Double.parseDouble(sprPrixModifierCategorie.getValue().toString());
+        ctrlCategorie.updateCategorie(libelle, prix);
+        dispose();
+    }//GEN-LAST:event_btnAjouterModifierCategorieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,7 +155,6 @@ public class FrmModifierCategorie extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAjouterModifierCategorie;
-    private javax.swing.JButton btnAnnulerModifierCategorie;
     private javax.swing.JLabel lblLibelleModifierCategorie;
     private javax.swing.JLabel lblPrixModifierCategorie;
     private javax.swing.JLabel lblTitreModifierCategorie;

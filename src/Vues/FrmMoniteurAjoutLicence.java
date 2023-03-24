@@ -4,6 +4,7 @@
  */
 package Vues;
 
+import Controlers.CtrlCategorie;
 import Controlers.CtrlLicence;
 import Entities.User;
 import Tools.ConnexionBDD;
@@ -15,6 +16,7 @@ import Tools.ConnexionBDD;
 public class FrmMoniteurAjoutLicence extends javax.swing.JFrame {
     CtrlLicence ctrlLicence;
     ConnexionBDD maCnx;
+    CtrlCategorie ctrlCategorie;
     User user;
     /**
      * Creates new form FrmMoniteurAjoutLicence
@@ -44,12 +46,15 @@ public class FrmMoniteurAjoutLicence extends javax.swing.JFrame {
         btnAjout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jdcDateObtention.setDateFormatString("dd/MM/yyyy");
 
         jLabel1.setText("Date d'obtention:");
-
-        cboCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categorie 1", "Categorie 2", "Categorie 3", "Categorie 4", "Categorie 5", "" }));
 
         jLabel2.setText("Catégorie :");
 
@@ -124,6 +129,15 @@ public class FrmMoniteurAjoutLicence extends javax.swing.JFrame {
     ctrlLicence.ajoutLicence(user.getCodeMoniteur(),codeCategorie , jdcDateObtention.getDate());
     dispose();
     }//GEN-LAST:event_btnAjoutActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        maCnx = new ConnexionBDD();
+        ctrlCategorie = new CtrlCategorie();
+        for(String categorie : ctrlCategorie.getCategorieByMoniteur(user.getCodeMoniteur())){
+            cboCategorie.addItem(categorie);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

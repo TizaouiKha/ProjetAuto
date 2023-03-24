@@ -77,17 +77,43 @@ public class CtrlCategorie {
          return libelle;
 
     }
-     public void AjoutCategorie(int codeCategorie, String libelle, double prix){
+     public void AjoutCategorie( String libelle, double prix){
         try {
-            ps = cnx.prepareStatement("Insert into categorie VALUES(?,?,?)");
-            ps.setInt(1,codeCategorie);
-            ps.setString(2, libelle);
-            ps.setDouble(3, prix);
+            ps = cnx.prepareStatement("Insert into categorie (Libelle, Prix) Values(?,?)");
+            ps.setString(1, libelle);
+            ps.setDouble(2, prix);
             ps.executeUpdate();
             ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(CtrlMoniteur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+     public void updateCategorie(String libelle, double prix){
+        try {
+            ps = cnx.prepareStatement("Update categorie set Prix = ? where Libelle = ?");      
+            ps.setDouble(1, prix);
+            ps.setString(2, libelle);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlCategorie.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+     public ArrayList<String> getCategorieByMoniteur(int idMoniteur){
+        ArrayList<String> lesCategories = new ArrayList<>();
+        try {
+            ps = cnx.prepareStatement("Select DISTINCT(Libelle) from categorie where Libelle NOT IN ("
+                    + "SELECT Libelle FROM categorie JOIN licence on categorie.CodeCategorie = licence.CodeCategorie WHERE licence.CodeMoniteur = ?) group by Libelle");
+            ps.setInt(1, idMoniteur);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                lesCategories.add(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlLicence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesCategories;
+    }
 }

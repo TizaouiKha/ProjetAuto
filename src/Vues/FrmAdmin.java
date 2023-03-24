@@ -39,28 +39,28 @@ public class FrmAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnAjouterVehicule.setText("Ajouter Vehicule");
+        btnAjouterVehicule.setText("Ajouter Véhicule");
         btnAjouterVehicule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAjouterVehiculeActionPerformed(evt);
             }
         });
 
-        btnModifVehicule.setText("Modifier Vehicule");
+        btnModifVehicule.setText("Modifier Véhicule");
         btnModifVehicule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModifVehiculeActionPerformed(evt);
             }
         });
 
-        btnModifCategorie.setText("Modifier Categorie");
+        btnModifCategorie.setText("Modifier Catégorie");
         btnModifCategorie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModifCategorieActionPerformed(evt);
             }
         });
 
-        btnAjouterCategorie.setText("Ajouter Categorie");
+        btnAjouterCategorie.setText("Ajouter Catégorie");
         btnAjouterCategorie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAjouterCategorieActionPerformed(evt);
@@ -74,14 +74,14 @@ public class FrmAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnVisualiserLecon.setText("Visualiser les leçon d'un moniteur avec un eleve");
+        btnVisualiserLecon.setText("Visualiser les leçons d'un moniteur avec un élève");
         btnVisualiserLecon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisualiserLeconActionPerformed(evt);
             }
         });
 
-        btnVisualiserEleve.setText("Visualiser planning de l'eleve");
+        btnVisualiserEleve.setText("Visualiser planning de l'élève");
         btnVisualiserEleve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisualiserEleveActionPerformed(evt);
