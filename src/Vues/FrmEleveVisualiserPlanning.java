@@ -103,7 +103,7 @@ public class FrmEleveVisualiserPlanning extends javax.swing.JFrame {
         ctrlLecon = new CtrlLecon();
         ctrlEleve = new CtrlEleve();
         int idEleve = user.getCodeEleve();
-        mdl.loadDatasLeconsByMoniteurAndByEleve(ctrlLecon.getAllLeconByIdEleve(idEleve));
+        mdl.loadDatasPlanningEleve(ctrlLecon.getAllLeconByIdEleve(idEleve));
         tblLeconEleve.setModel(mdl);
     }//GEN-LAST:event_formWindowOpened
 

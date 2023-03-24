@@ -6,11 +6,9 @@ package Vues;
 
 import Controlers.CtrlMoniteur;
 import Controlers.CtrlLecon;
-import Entities.Lecon;
 import Entities.User;
 import Tools.ConnexionBDD;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
+import Tools.ModelJTable;
 
 /**
  *
@@ -19,16 +17,9 @@ import javax.swing.tree.DefaultTreeModel;
 public class FrmMoniteurVisualiserPlanning extends javax.swing.JFrame {
     User user;
     ConnexionBDD maCnx;
-    DefaultMutableTreeNode racine;
-    DefaultTreeModel model;
-    DefaultMutableTreeNode Mois;
-    DefaultMutableTreeNode Date;
-    DefaultMutableTreeNode LibelleCategorie;
-    DefaultMutableTreeNode Heure;
-    DefaultMutableTreeNode Eleve;
-    DefaultMutableTreeNode Immatriculation;
     CtrlLecon ctrlLecon;
     CtrlMoniteur ctrlMoniteur;
+    ModelJTable mdl;
     /*
      * Creates new form FrmMoniteurVisualiserPlanning
      */
@@ -49,9 +40,9 @@ public class FrmMoniteurVisualiserPlanning extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        trVisualiserMoniteur = new javax.swing.JTree();
         lblPlanning = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMoniteurLecon = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -60,30 +51,44 @@ public class FrmMoniteurVisualiserPlanning extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(trVisualiserMoniteur);
-
         lblPlanning.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblPlanning.setText("Visualiser Planning");
+
+        tblMoniteurLecon.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblMoniteurLecon);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(lblPlanning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(lblPlanning)))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(42, 42, 42)
                 .addComponent(lblPlanning)
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
 
         pack();
@@ -91,28 +96,13 @@ public class FrmMoniteurVisualiserPlanning extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        maCnx = new ConnexionBDD();
+        
+        mdl = new ModelJTable();
         ctrlLecon = new CtrlLecon();
-        ctrlMoniteur = new CtrlMoniteur();
-        racine = new DefaultMutableTreeNode("Toutes les leçons");
-        racine.removeAllChildren();
-        int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(user.getNomUser());
-        for(Lecon lecon : ctrlLecon.getAllLeconByIdMoniteurByTypePermis(idMoniteur)){
-            Mois = new DefaultMutableTreeNode("Mois: "+lecon.getMois());
-            Date = new DefaultMutableTreeNode("Date "+lecon.getDate());
-            LibelleCategorie = new DefaultMutableTreeNode("Type Permis "+ lecon.getLibelleCategorie());
-            Heure = new DefaultMutableTreeNode("Heure: "+lecon.getHeure());
-            Eleve = new DefaultMutableTreeNode("Nom Eleve: "+lecon.getNomEleve());
-            Immatriculation = new DefaultMutableTreeNode("Immatriculation: "+lecon.getImmatriculation());
-            Date.add(Heure);
-            Date.add(Eleve);
-            Date.add(Immatriculation);
-            LibelleCategorie.add(Date);
-            Mois.add(LibelleCategorie);
-            racine.add(Mois);
-        }
-        model=  new DefaultTreeModel(racine);
-        trVisualiserMoniteur.setModel(model);
+        ctrlMoniteur= new CtrlMoniteur();
+        int idMoniteur = user.getCodeMoniteur();
+        mdl.loadDatasPlanningMoniteur(ctrlLecon.getAllLeconByIdMoniteur(idMoniteur));
+        tblMoniteurLecon.setModel(mdl);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -152,8 +142,8 @@ public class FrmMoniteurVisualiserPlanning extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblPlanning;
-    private javax.swing.JTree trVisualiserMoniteur;
+    private javax.swing.JTable tblMoniteurLecon;
     // End of variables declaration//GEN-END:variables
 }

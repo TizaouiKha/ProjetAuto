@@ -45,14 +45,16 @@ public class Lecon {
         nomEleve=unNomEleve;
         immatriculation= uneImmatriculation;
     }
-    public Lecon(int unId, String uneDate, String uneHeure, String unNomMoniteur, String unNomEleve, String uneImmatriculation, int unReglee){
+    public Lecon leconTable(int unId,String unMois, String unJour, String uneHeure, String unNomMoniteur, String unNomEleve, String uneImmatriculation, String unLibelleCategorie){
         idLecon= unId;
-        date= uneDate;
+        mois=unMois;
+        jour= unJour;
         heure= uneHeure;
         nomMoniteur=unNomMoniteur;
         nomEleve=unNomEleve;
         immatriculation= uneImmatriculation;
-        reglee= unReglee;
+        libelleCategorie= unLibelleCategorie;
+        return this;
     }
     public Lecon(int unId, String unMois, String uneDate,String uneHeure, String unNomMoniteur, String uneImmatriculation, String unLibelleCategorie, int unReglee){
         idLecon= unId;

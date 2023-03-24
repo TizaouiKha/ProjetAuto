@@ -32,16 +32,18 @@ public class CtrlLecon {
     public ArrayList<Lecon> getAllLeconByIdEleve(int idEleve){
          ArrayList<Lecon>lesLecons= new ArrayList<>();
         try {
-            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, Immatriculation "
+            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, lecon.Immatriculation, categorie.Libelle "
                     + "FROM lecon "
                     + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
                     + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
+                    + "join vehicule on lecon.Immatriculation = vehicule.Immatriculation "
+                    + "join categorie on vehicule.CodeCategorie = categorie.CodeCategorie "
                     + "WHERE lecon.CodeEleve = ? "
                     + "Order by mois, jour, Heure");
             ps.setInt(1, idEleve);
             rs= ps.executeQuery();
             while(rs.next()){
-                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                Lecon lecon = new Lecon().leconTable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8));
                 lesLecons.add(lecon);
             }   
             ps.close();
@@ -54,14 +56,18 @@ public class CtrlLecon {
     public ArrayList<Lecon> getAllLeconByIdMoniteur(int idMoniteur){
          ArrayList<Lecon>lesLecons= new ArrayList<>();
         try {
-            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, CodeEleve, Immatriculation "
+            ps= cnx.prepareStatement("SELECT CodeLecon, MONTH(Date) AS mois, DAY(Date) as jour, Heure , moniteur.Nom as nomMoniteur, eleve.Nom as nomEleve, lecon.Immatriculation, categorie.Libelle  "
                     + "FROM lecon "
                     + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
-                    + "WHERE lecon.CodeMoniteur = ?");
+                    + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
+                    + "join vehicule on lecon.Immatriculation = vehicule.Immatriculation "
+                    + "join categorie on vehicule.CodeCategorie = categorie.CodeCategorie "
+                    + "WHERE lecon.CodeMoniteur = ? "
+                    + "Order by mois, jour, Heure");
             ps.setInt(1, idMoniteur);
             rs= ps.executeQuery();
             while(rs.next()){
-                Lecon lecon = new Lecon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                Lecon lecon = new Lecon().leconTable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
                 lesLecons.add(lecon);
             }   
             ps.close();
