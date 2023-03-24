@@ -38,7 +38,7 @@ public class FrmUser extends javax.swing.JFrame {
         btnInscrire = new javax.swing.JButton();
         lblEleve = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnModifInfo.setText("Modifier ses informations personnelles");
         btnModifInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +95,7 @@ public class FrmUser extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInscrireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscrireActionPerformed
@@ -104,7 +105,7 @@ public class FrmUser extends javax.swing.JFrame {
 
     
     private void btnModifInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifInfoActionPerformed
-       FrmModifInfoPerso frm = new FrmModifInfoPerso();
+       FrmModifInfoPerso frm = new FrmModifInfoPerso(user);
        frm.setVisible(true);
     }//GEN-LAST:event_btnModifInfoActionPerformed
 

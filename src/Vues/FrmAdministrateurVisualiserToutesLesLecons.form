@@ -2,11 +2,11 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
@@ -35,14 +35,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblMoniteurVisuToutesLecons" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEleveVisuToutesLecons" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="cboMoniteur" max="32767" attributes="0"/>
+                          <Component id="lblMoniteurVisuToutesLecons" max="32767" attributes="0"/>
+                          <Component id="lblEleveVisuToutesLecons" pref="88" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtEleveVisuToutesLecons" max="32767" attributes="0"/>
+                          <Component id="cboMoniteur" pref="120" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -107,7 +107,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblEleveVisuToutesLecons">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Eleve :"/>
+        <Property name="text" type="java.lang.String" value="Nom Eleve :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEleveVisuToutesLecons">

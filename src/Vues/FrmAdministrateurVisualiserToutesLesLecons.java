@@ -46,7 +46,7 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         tblVisuToutesLecons = new javax.swing.JTable();
         btnVisualiserVisuToutesLecons = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -58,7 +58,7 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
 
         lblMoniteurVisuToutesLecons.setText("Moniteur :");
 
-        lblEleveVisuToutesLecons.setText("Eleve :");
+        lblEleveVisuToutesLecons.setText("Nom Eleve :");
 
         tblVisuToutesLecons.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,13 +92,13 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMoniteurVisuToutesLecons)
-                            .addComponent(lblEleveVisuToutesLecons))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboMoniteur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEleveVisuToutesLecons)))
+                            .addComponent(lblMoniteurVisuToutesLecons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEleveVisuToutesLecons, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEleveVisuToutesLecons)
+                            .addComponent(cboMoniteur, 0, 120, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,11 +127,11 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
         maCnx = new ConnexionBDD();
         ctrlMoniteur = new CtrlMoniteur();
         for(String Moniteur : ctrlMoniteur.getAllNomMoniteur()){
@@ -148,7 +148,7 @@ public class FrmAdministrateurVisualiserToutesLesLecons extends javax.swing.JFra
         String nomMoniteur = String.valueOf(cboMoniteur.getSelectedItem());
         int idMoniteur = ctrlMoniteur.getIdMoniteurByNom(nomMoniteur);
         int idEleve= ctrlEleve.getIdEleveByNom(nomEleve);
-        mdl.loadDatasLeconsByMoniteurAndByEleve(ctrlLecon.getAllLeconByIdMoniteurAndByIdEleve(idMoniteur, idEleve));
+        mdl.loadDatasLeconsByMoniteurAndByEleve(ctrlLecon.getAllLeconByIdMoniteurAndByIdEleve(idEleve, idMoniteur));
         tblVisuToutesLecons.setModel(mdl);
     }//GEN-LAST:event_btnVisualiserVisuToutesLeconsActionPerformed
 

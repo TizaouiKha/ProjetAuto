@@ -36,7 +36,7 @@ public class FrmAdmin extends javax.swing.JFrame {
         btnVisualiserMoniteur = new javax.swing.JButton();
         lblAdmin = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnAjouterVehicule.setText("Ajouter Vehicule");
         btnAjouterVehicule.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +147,7 @@ public class FrmAdmin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAjouterVehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterVehiculeActionPerformed

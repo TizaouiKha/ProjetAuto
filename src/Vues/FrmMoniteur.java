@@ -35,6 +35,7 @@ public class FrmMoniteur extends javax.swing.JFrame {
         btnModifInfoPerso = new javax.swing.JButton();
         btnVisualiserMonPlanning = new javax.swing.JButton();
         btnAjouterLicence = new javax.swing.JButton();
+        lblMoniteur = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,9 @@ public class FrmMoniteur extends javax.swing.JFrame {
             }
         });
 
+        lblMoniteur.setForeground(new java.awt.Color(51, 0, 255));
+        lblMoniteur.setText("Moniteur");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,6 +74,10 @@ public class FrmMoniteur extends javax.swing.JFrame {
                     .addComponent(btnVisualiserMonPlanning)
                     .addComponent(btnModifInfoPerso))
                 .addContainerGap(141, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMoniteur)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,10 +88,13 @@ public class FrmMoniteur extends javax.swing.JFrame {
                 .addComponent(btnVisualiserMonPlanning)
                 .addGap(18, 18, 18)
                 .addComponent(btnAjouterLicence)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(lblMoniteur)
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVisualiserMonPlanningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualiserMonPlanningActionPerformed
@@ -92,12 +103,12 @@ public class FrmMoniteur extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVisualiserMonPlanningActionPerformed
 
     private void btnModifInfoPersoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifInfoPersoActionPerformed
-       FrmModifInfoPerso frm = new FrmModifInfoPerso ();
+       FrmModifInfoPerso frm = new FrmModifInfoPerso (user);
        frm.setVisible(true);
     }//GEN-LAST:event_btnModifInfoPersoActionPerformed
 
     private void btnAjouterLicenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjouterLicenceActionPerformed
-    FrmModifInfoPerso frm = new FrmModifInfoPerso ();
+    FrmMoniteurAjoutLicence frm = new FrmMoniteurAjoutLicence(user);
      frm.setVisible(true);
     }//GEN-LAST:event_btnAjouterLicenceActionPerformed
 
@@ -140,5 +151,6 @@ public class FrmMoniteur extends javax.swing.JFrame {
     private javax.swing.JButton btnAjouterLicence;
     private javax.swing.JButton btnModifInfoPerso;
     private javax.swing.JButton btnVisualiserMonPlanning;
+    private javax.swing.JLabel lblMoniteur;
     // End of variables declaration//GEN-END:variables
 }

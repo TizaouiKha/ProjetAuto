@@ -52,7 +52,7 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
         cboVoitureDispoInscrireLecon = new javax.swing.JComboBox<>();
         btnSinscrireInscrireLecon = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -185,6 +185,7 @@ public class FrmInscrireAUneLecon extends javax.swing.JFrame {
 
     private void cboPermisInscrireLeconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPermisInscrireLeconActionPerformed
         // TODO add your handling code here:
+        cboVoitureDispoInscrireLecon.removeAllItems();
         ctrlVehicule = new CtrlVehicule();
         if(cboPermisInscrireLecon.getSelectedItem().toString().equals("Permis Voiture")){
             for(Vehicule vehicule: ctrlVehicule.getVehiculesByCategorie(1)){

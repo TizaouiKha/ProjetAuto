@@ -101,5 +101,38 @@ public class CtrlMoniteur {
             Logger.getLogger(CtrlMoniteur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public Moniteur getMoniteurById(int idMoniteur){
+        Moniteur moniteur = null;
+        try {
+            ps = cnx.prepareStatement("select CodeMoniteur, Nom, Prenom, Sexe, DateDeNaissance, Adresse1, CodePostal, Ville, Telephone from moniteur where CodeMoniteur =?");
+            ps.setInt(1, idMoniteur);
+            rs = ps.executeQuery();
+            rs.next();
+            moniteur = new Moniteur(rs.getInt("CodeMoniteur"), rs.getString("Nom"), rs.getString("Prenom"), rs.getInt("Sexe"), rs.getString("DateDeNaissance"), rs.getString("Adresse1"), rs.getString("CodePostal"), rs.getString("Ville"), rs.getString("Telephone"));
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return moniteur;
+    }
+    public void updateMoniteur(String nom, String prenom, int sexe, Date dateDeNaissance, String adresse1, String codePostal, String ville, String telephone, int CodeMoniteur){
+        try {
+            ps = cnx.prepareStatement("Update moniteur set Nom =?, Prenom = ?, Sexe = ?, DateDeNaissance = ?, Adresse1 = ?, CodePostal = ?, Ville = ?, Telephone = ? where CodeMoniteur=?");
+            ps.setString(1, nom);
+            ps.setString(2, prenom);
+            ps.setInt(3, sexe);
+            ps.setDate(4, new java.sql.Date(dateDeNaissance.getTime()));
+            ps.setString(5, adresse1);
+            ps.setString(6, codePostal);
+            ps.setString(7, ville);
+            ps.setString(8, telephone);
+            ps.setInt(9, CodeMoniteur);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlEleve.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
    

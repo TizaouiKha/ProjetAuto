@@ -236,10 +236,7 @@ public class FrmAjoutMoniteur extends javax.swing.JFrame {
         String codepostal = txtCodePostalAjoutMoniteur.getText();
         String ville = txtVilleAjoutMoniteur.getText();
         String telephone =txtTelephoneAjoutMoniteur.getText();
-       
-       
         ctrlMoniteur = new CtrlMoniteur();
-        
         ctrlMoniteur.AjoutMoniteur(CodeMoniteur, Nom, Prenom, sexe, datenaissance, adresse, codepostal, ville, telephone);
         
     }//GEN-LAST:event_btnAjouterAjoutMoniteurActionPerformed

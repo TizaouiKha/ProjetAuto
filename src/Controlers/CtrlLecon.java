@@ -36,7 +36,8 @@ public class CtrlLecon {
                     + "FROM lecon "
                     + "join eleve on lecon.CodeEleve = eleve.CodeEleve "
                     + "join moniteur on lecon.CodeMoniteur = moniteur.CodeMoniteur "
-                    + "WHERE lecon.CodeEleve = ?");
+                    + "WHERE lecon.CodeEleve = ? "
+                    + "Order by mois, jour, Heure");
             ps.setInt(1, idEleve);
             rs= ps.executeQuery();
             while(rs.next()){

@@ -28,13 +28,22 @@ public class CtrlUser {
     public User VerifierUser(String login, String mdp){
         User monUser = null;
         try {            
-            ps = cnx.prepareStatement("SELECT users.idUser, users.nomUser,users.prenomUser,users.statutUser from users where users.loginUser=? and users.pwdUser=?");
+            ps = cnx.prepareStatement("SELECT users.idUser, users.nomUser,users.prenomUser,users.loginUser, users.pwdUser, users.statutUser, users.CodeEleve, users.CodeMoniteur from users where users.loginUser=? and users.pwdUser=?");
             ps.setString(1, login);
             ps.setString(2, mdp);
             rs= ps.executeQuery();
             if(rs.next()){
-                monUser= new User(rs.getInt("idUser"), rs.getString("nomUser"), rs.getString("prenomUser"), rs.getString("statutUser"));
+                if(rs.getString("statutUser").equals("eleve")){
+                    monUser= new User().eleve(rs.getInt("idUser"), rs.getString("nomUser"), rs.getString("prenomUser"),rs.getString("loginUser"),rs.getString("pwdUser"), rs.getString("statutUser"), rs.getInt("CodeEleve"));
+                }
+                else if(rs.getString("statutUser").equals("moniteur")){
+                    monUser= new User().moniteur(rs.getInt("idUser"), rs.getString("nomUser"), rs.getString("prenomUser"),rs.getString("loginUser"),rs.getString("pwdUser"), rs.getString("statutUser"), rs.getInt("CodeMoniteur"));
+                }
+                else{
+                monUser= new User().admin(rs.getInt("idUser"), rs.getString("nomUser"), rs.getString("prenomUser"),rs.getString("loginUser"),rs.getString("pwdUser"), rs.getString("statutUser"));
+                }
             }
+            
             rs.close();
             ps.close();
             
@@ -42,6 +51,18 @@ public class CtrlUser {
             Logger.getLogger(CtrlUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         return monUser;
+    }
+    public void updateLoginMdpUser(String login, String mdp, int idUser){
+        try {
+            ps = cnx.prepareStatement("Update users set loginUser = ?, pwduser = ? where idUser = ?");
+            ps.setString(1, login);
+            ps.setString(2, mdp);
+            ps.setInt(3, idUser);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

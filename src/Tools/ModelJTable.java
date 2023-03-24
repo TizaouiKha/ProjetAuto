@@ -43,18 +43,18 @@ public class ModelJTable extends AbstractTableModel {
         return column == 3 ;
  }
     public void loadDatasLeconsByMoniteurAndByEleve(ArrayList<Lecon> lesLecons){
-        colonnes = new String[]{"Numéro", "Date","Heure","Nom moniteur","Nom eleve", "Immatriculation", "Reglee"};
+        colonnes = new String[]{"Numéro", "Mois","Jour","Heure","Nom moniteur","Nom eleve", "Immatriculation"};
         lignes = new Object[lesLecons.size()][7];
         int i = 0;
         for (Lecon lecon : lesLecons)
         {
             lignes[i][0] = lecon.getIdLecon();
-            lignes[i][1] = lecon.getDate();
-            lignes[i][2] = lecon.getHeure();
-            lignes[i][3] = lecon.getNomMoniteur();
-            lignes[i][4] = lecon.getNomEleve();
-            lignes[i][5] = lecon.getImmatriculation();
-            lignes[i][6] = lecon.getReglee();
+            lignes[i][1] = lecon.getMois();
+            lignes[i][2] = lecon.getJour();
+            lignes[i][3] = lecon.getHeure();
+            lignes[i][4] = lecon.getNomMoniteur();
+            lignes[i][5] = lecon.getNomEleve();
+            lignes[i][6] = lecon.getImmatriculation();
             i++;
         }
         fireTableChanged(null);
@@ -70,6 +70,21 @@ public class ModelJTable extends AbstractTableModel {
             lignes[i][2] = vehicule.getModele();
             lignes[i][3] = vehicule.getAnnee();
             lignes[i][4] = vehicule.getIdCategorie();
+            i++;
+        }
+        fireTableChanged(null);
+    }
+    public void loadDatasPlanningEleve(ArrayList<Lecon>lesLecons){
+        colonnes = new String[]{"Mois", "Date", "Heure","Type Permis", "Nom Moniteur", "Immatriculation"};
+        lignes = new Object[lesLecons.size()][6];
+        int i = 0;
+        for(Lecon lecon : lesLecons){
+            lignes[i][0]= lecon.getMois();
+            lignes[i][1]= lecon.getDate();
+            lignes[i][2]= lecon.getHeure();
+            lignes[i][3]= lecon.getLibelleCategorie();
+            lignes[i][4]= lecon.getNomMoniteur();
+            lignes[i][5]= lecon.getImmatriculation();
             i++;
         }
         fireTableChanged(null);
